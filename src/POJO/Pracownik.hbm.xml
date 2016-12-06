@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-06 23:33:51 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Pracownik" table="PRACOWNIK" schema="ROOT" optimistic-lock="version">
+        <id name="idPracownika" type="int">
+            <column name="ID_PRACOWNIKA" precision="5" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="imie" type="string">
+            <column name="IMIE" length="20" />
+        </property>
+        <property name="nazwisko" type="string">
+            <column name="NAZWISKO" length="25" />
+        </property>
+        <property name="dataZatrudnienia" type="date">
+            <column name="DATA_ZATRUDNIENIA" length="10" />
+        </property>
+        <property name="idStanowiska" type="java.lang.Integer">
+            <column name="ID_STANOWISKA" precision="5" scale="0" />
+        </property>
+        <property name="idOddzialu" type="java.lang.Integer">
+            <column name="ID_ODDZIALU" precision="5" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
