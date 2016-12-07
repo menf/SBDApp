@@ -464,6 +464,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     private void jMenuItem_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_LoginActionPerformed
         // TODO add your handling code here:
         ROLE=-1;
+        loggedId = -1;
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         moviesPanel.setVisible(false);
