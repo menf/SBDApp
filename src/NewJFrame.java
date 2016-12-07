@@ -1,5 +1,6 @@
 import POJO.Film;
 import POJO.Klient;
+import POJO.Nosnik;
 import POJO.Pracownik;
 import POJO.Rezyser;
 import java.util.List;
@@ -68,8 +69,6 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         moviesPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         moviesTable = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        detailsTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -273,24 +272,24 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
 
         moviesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -300,36 +299,17 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         moviesTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(moviesTable);
 
-        detailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(detailsTable);
-
         javax.swing.GroupLayout moviesPanelLayout = new javax.swing.GroupLayout(moviesPanel);
         moviesPanel.setLayout(moviesPanelLayout);
         moviesPanelLayout.setHorizontalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(moviesPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
         );
         moviesPanelLayout.setVerticalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(moviesPanelLayout.createSequentialGroup()
                 .addGap(0, 106, Short.MAX_VALUE)
-                .addGroup(moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenu2.setText("File");
@@ -577,6 +557,8 @@ private void runQueryBasedOnLastName() {
     tableHeaders.add("Tytuł"); 
     tableHeaders.add("Rok Produkcji");
     tableHeaders.add("Reżyser");
+    tableHeaders.add("Nośnik");
+    tableHeaders.add("Dostępność");
     if(!moviesList.isEmpty()){
         Film film;
         session.beginTransaction();
@@ -587,9 +569,17 @@ private void runQueryBasedOnLastName() {
         Vector<Object> oneRow = new Vector<>();
         q = session.createQuery("from Rezyser a where a.idRezysera IS "+film.getIdRezysera().toString());
         directorList = q.list();
+        q = session.createQuery("from Nosnik a where a.idNosnika IS "+film.getIdNosnika().toString());
         oneRow.add(film.getTytul());
         oneRow.add(film.getRokProdukcji());
         oneRow.add(((Rezyser)(directorList.get(0))).getNazwisko());
+        oneRow.add(((Nosnik)q.list().get(0)).getTyp());
+        if(film.getIlosc()>0){
+            oneRow.add("Dostępny");
+        }
+        else{
+            oneRow.add("Niedostępny");
+        }
         tableData.add(oneRow);
     }
     session.getTransaction().commit();
@@ -671,7 +661,6 @@ private void runQueryBasedOnLastName() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable detailsTable;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -694,7 +683,6 @@ private void runQueryBasedOnLastName() {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
