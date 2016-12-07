@@ -1,5 +1,5 @@
 package POJO;
-// Generated 2016-12-07 00:35:26 by Hibernate Tools 4.3.1
+// Generated 2016-12-07 14:38:12 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -15,20 +15,26 @@ public class Klient  implements java.io.Serializable {
      private String nazwisko;
      private Date dataUrodzenia;
      private Integer idAdresu;
+     private String login;
+     private String haslo;
 
     public Klient() {
     }
 
 	
-    public Klient(int idKlienta) {
+    public Klient(int idKlienta, String login, String haslo) {
         this.idKlienta = idKlienta;
+        this.login = login;
+        this.haslo = haslo;
     }
-    public Klient(int idKlienta, String imie, String nazwisko, Date dataUrodzenia, Integer idAdresu) {
+    public Klient(int idKlienta, String imie, String nazwisko, Date dataUrodzenia, Integer idAdresu, String login, String haslo) {
        this.idKlienta = idKlienta;
        this.imie = imie;
        this.nazwisko = nazwisko;
        this.dataUrodzenia = dataUrodzenia;
        this.idAdresu = idAdresu;
+       this.login = login;
+       this.haslo = haslo;
     }
    
     public int getIdKlienta() {
@@ -65,6 +71,20 @@ public class Klient  implements java.io.Serializable {
     
     public void setIdAdresu(Integer idAdresu) {
         this.idAdresu = idAdresu;
+    }
+    public String getLogin() {
+        return this.login;
+    }
+    
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getHaslo() {
+        return this.haslo;
+    }
+    
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
     }
 
 

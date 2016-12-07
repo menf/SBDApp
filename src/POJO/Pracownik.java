@@ -1,5 +1,5 @@
 package POJO;
-// Generated 2016-12-07 00:35:26 by Hibernate Tools 4.3.1
+// Generated 2016-12-07 14:38:12 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,21 +16,27 @@ public class Pracownik  implements java.io.Serializable {
      private Date dataZatrudnienia;
      private Integer idStanowiska;
      private Integer idOddzialu;
+     private String login;
+     private String haslo;
 
     public Pracownik() {
     }
 
 	
-    public Pracownik(int idPracownika) {
+    public Pracownik(int idPracownika, String login, String haslo) {
         this.idPracownika = idPracownika;
+        this.login = login;
+        this.haslo = haslo;
     }
-    public Pracownik(int idPracownika, String imie, String nazwisko, Date dataZatrudnienia, Integer idStanowiska, Integer idOddzialu) {
+    public Pracownik(int idPracownika, String imie, String nazwisko, Date dataZatrudnienia, Integer idStanowiska, Integer idOddzialu, String login, String haslo) {
        this.idPracownika = idPracownika;
        this.imie = imie;
        this.nazwisko = nazwisko;
        this.dataZatrudnienia = dataZatrudnienia;
        this.idStanowiska = idStanowiska;
        this.idOddzialu = idOddzialu;
+       this.login = login;
+       this.haslo = haslo;
     }
    
     public int getIdPracownika() {
@@ -74,6 +80,20 @@ public class Pracownik  implements java.io.Serializable {
     
     public void setIdOddzialu(Integer idOddzialu) {
         this.idOddzialu = idOddzialu;
+    }
+    public String getLogin() {
+        return this.login;
+    }
+    
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getHaslo() {
+        return this.haslo;
+    }
+    
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
     }
 
 

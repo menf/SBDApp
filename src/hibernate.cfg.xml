@@ -11,16 +11,16 @@
     <!--  <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
 -->
     <property name="hibernate.default_schema">APP</property>
-    <mapping resource="POJO/Gatunek.hbm.xml"/>
-    <mapping resource="POJO/Transakcja.hbm.xml"/>
-    <mapping resource="POJO/Adres.hbm.xml"/>
-    <mapping resource="POJO/Rezyser.hbm.xml"/>
     <mapping resource="POJO/Oddzial.hbm.xml"/>
-    <mapping resource="POJO/GatunekFilm.hbm.xml"/>
-    <mapping resource="POJO/Film.hbm.xml"/>
-    <mapping resource="POJO/Stanowisko.hbm.xml"/>
-    <mapping resource="POJO/Pracownik.hbm.xml"/>
-    <mapping resource="POJO/Nosnik.hbm.xml"/>
     <mapping resource="POJO/Klient.hbm.xml"/>
+    <mapping resource="POJO/Nosnik.hbm.xml"/>
+    <mapping resource="POJO/Gatunek.hbm.xml"/>
+    <mapping resource="POJO/Pracownik.hbm.xml"/>
+    <mapping resource="POJO/Film.hbm.xml"/>
+    <mapping resource="POJO/Rezyser.hbm.xml"/>
+    <mapping resource="POJO/Stanowisko.hbm.xml"/>
+    <mapping resource="POJO/Adres.hbm.xml"/>
+    <mapping resource="POJO/Transakcja.hbm.xml"/>
+    <mapping resource="POJO/GatunekFilm.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
