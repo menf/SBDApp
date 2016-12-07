@@ -6,7 +6,7 @@
     <class name="POJO.Rezyser" table="REZYSER" schema="ROOT" optimistic-lock="version">
         <id name="idRezysera" type="int">
             <column name="ID_REZYSERA" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="imie" type="string">
             <column name="IMIE" length="20" />

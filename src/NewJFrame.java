@@ -4,6 +4,7 @@ import POJO.Klient;
 import POJO.Nosnik;
 import POJO.Pracownik;
 import POJO.Rezyser;
+import POJO.Stanowisko;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -71,6 +72,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         moviesTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        addMoviePanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        newMovieTitle = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        newMovieYear = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        newMovieQuant = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        newMovieCarrier = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        newMovieDirector = new javax.swing.JComboBox<>();
+        addMovieButton = new javax.swing.JButton();
+        newMovieError = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         transakcjeMenu = new javax.swing.JMenu();
         adminMenu = new javax.swing.JMenu();
@@ -322,12 +336,104 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jLabel5.setText("Tytuł");
+
+        jLabel6.setText("Rok produkcji");
+
+        jLabel7.setText("Ilość");
+
+        jLabel8.setText("Nośnik");
+
+        newMovieCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel9.setText("Reżyser");
+
+        newMovieDirector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        addMovieButton.setText("Dodaj Film");
+        addMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMovieButtonActionPerformed(evt);
+            }
+        });
+
+        newMovieError.setForeground(new java.awt.Color(255, 0, 51));
+        newMovieError.setText("Wprowadź poprawne dane!");
+
+        javax.swing.GroupLayout addMoviePanelLayout = new javax.swing.GroupLayout(addMoviePanel);
+        addMoviePanel.setLayout(addMoviePanelLayout);
+        addMoviePanelLayout.setHorizontalGroup(
+            addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newMovieError)
+                    .addGroup(addMoviePanelLayout.createSequentialGroup()
+                        .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newMovieDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newMovieCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newMovieQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newMovieYear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addMoviePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(75, 75, 75)
+                                .addComponent(newMovieTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
+                        .addComponent(addMovieButton)))
+                .addGap(0, 66, Short.MAX_VALUE))
+        );
+        addMoviePanelLayout.setVerticalGroup(
+            addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addMoviePanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMovieTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMovieYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMovieQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMovieCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMovieDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMovieButton))
+                .addGap(33, 33, 33)
+                .addComponent(newMovieError)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
         transakcjeMenu.setText("Transakcje");
         jMenuBar1.add(transakcjeMenu);
 
         adminMenu.setText("Administracja");
 
         jMenuItem7.setText("Dodaj Film");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         adminMenu.add(jMenuItem7);
 
         jMenuItem1.setText("Usun Film");
@@ -372,6 +478,11 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(moviesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(addMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,6 +498,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(moviesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(addMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -405,6 +521,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_queryButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        
+        
         String pass = new String(passField.getPassword());
         if (!logField.getText().trim().equals("") && pass.length() > 0) {
             loginError.setVisible(false);
@@ -455,6 +573,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         loginPanel.setVisible(false);
         moviesPanel.setVisible(true);
+        addMoviePanel.setVisible(false);
         showMovies();
     }//GEN-LAST:event_moviesMenuMouseClicked
 
@@ -466,8 +585,83 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         moviesPanel.setVisible(false);
         loginPanel.setVisible(true);
+        addMoviePanel.setVisible(false);
         setVisibilities();
     }//GEN-LAST:event_menuLogOutMouseClicked
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        List carriers = null, directors = null;
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(false);  
+        addMoviePanel.setVisible(true);
+        newMovieError.setVisible(false);
+        
+        
+        newMovieCarrier.removeAllItems();
+        
+        session.beginTransaction();
+        Query q = session.createQuery("from Nosnik order by idNosnika");
+        carriers = q.list();
+        session.getTransaction().commit();
+        
+        for(Object nosnik : carriers){
+            
+            newMovieCarrier.addItem(((Nosnik)nosnik).getTyp());
+        }
+        
+        newMovieDirector.removeAllItems();
+        session.beginTransaction();
+        q = session.createQuery("from Rezyser order by idRezysera");
+        directors = q.list();
+        session.getTransaction().commit();
+        
+        for(Object rezyser : directors){
+            newMovieDirector.addItem(((Rezyser)rezyser).getImie()+" "+((Rezyser)rezyser).getNazwisko());
+        }
+        
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void addMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMovieButtonActionPerformed
+
+        newMovieError.setVisible(false);
+        if(newMovieTitle.getText().trim().equals("") || 
+           Integer.parseInt(newMovieYear.getText())<1895 || 
+           Integer.parseInt(newMovieQuant.getText()) < 0 || 
+           newMovieCarrier.getSelectedIndex() < 0 ||
+           newMovieDirector.getSelectedIndex()< 0
+                ){
+            newMovieError.setVisible(true);
+        }else{
+            
+            Film newFilm = new Film();
+            
+            newFilm.setTytul(newMovieTitle.getText());
+            newFilm.setRokProdukcji(Short.parseShort(newMovieYear.getText()));
+            newFilm.setIlosc(Long.parseLong(newMovieQuant.getText()));
+            newFilm.setIdRezysera(newMovieDirector.getSelectedIndex()+1);
+            newFilm.setIdNosnika(newMovieCarrier.getSelectedIndex()+1);
+            try{
+            session.beginTransaction();
+            
+            session.save(newFilm);
+            }catch(Exception e){
+                
+            }
+            finally{
+                session.getTransaction().commit();
+            }
+            
+           
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_addMovieButtonActionPerformed
  
     private void runQueryBasedOnFirstName() {
         executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
@@ -556,7 +750,8 @@ public class NewJFrame extends javax.swing.JFrame {
         adminMenu.setVisible(false);
         menuLogOut.setVisible(false);
         moviesMenu.setVisible(false);
-
+        
+        
         switch (ROLE) {
             case 0:  //uzytkownik
                 menuLogOut.setVisible(true);
@@ -632,6 +827,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 frame.loginPanel.setVisible(true);
                 frame.jPanel1.setVisible(false);
                 frame.loginError.setVisible(false);
+                frame.addMoviePanel.setVisible(false);
                 frame.setVisible(true);
                 
                 
@@ -640,6 +836,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addMovieButton;
+    private javax.swing.JPanel addMoviePanel;
     private javax.swing.JMenu adminMenu;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
@@ -648,6 +846,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem5;
@@ -669,6 +872,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu moviesMenu;
     private javax.swing.JPanel moviesPanel;
     private javax.swing.JTable moviesTable;
+    private javax.swing.JComboBox<String> newMovieCarrier;
+    private javax.swing.JComboBox<String> newMovieDirector;
+    private javax.swing.JLabel newMovieError;
+    private javax.swing.JTextField newMovieQuant;
+    private javax.swing.JTextField newMovieTitle;
+    private javax.swing.JTextField newMovieYear;
     private javax.swing.JPasswordField passField;
     private javax.swing.JButton queryButton;
     private javax.swing.JTable resultTable;

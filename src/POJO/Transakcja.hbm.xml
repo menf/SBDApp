@@ -6,7 +6,7 @@
     <class name="POJO.Transakcja" table="TRANSAKCJA" schema="ROOT" optimistic-lock="version">
         <id name="idTransakcji" type="int">
             <column name="ID_TRANSAKCJI" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="idKlienta" type="java.lang.Integer">
             <column name="ID_KLIENTA" precision="5" scale="0" />

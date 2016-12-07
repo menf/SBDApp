@@ -6,7 +6,7 @@
     <class name="POJO.Gatunek" table="GATUNEK" schema="ROOT" optimistic-lock="version">
         <id name="idGatunku" type="int">
             <column name="ID_GATUNKU" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="nazwa" type="string">
             <column name="NAZWA" length="20" />

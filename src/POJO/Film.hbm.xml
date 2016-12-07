@@ -6,7 +6,7 @@
     <class name="POJO.Film" table="FILM" schema="ROOT" optimistic-lock="version">
         <id name="idFilmu" type="int">
             <column name="ID_FILMU" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="tytul" type="string">
             <column name="TYTUL" length="35" not-null="true" />

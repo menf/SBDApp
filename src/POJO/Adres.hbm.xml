@@ -6,7 +6,7 @@
     <class name="POJO.Adres" table="ADRES" schema="ROOT" optimistic-lock="version">
         <id name="idAdresu" type="int">
             <column name="ID_ADRESU" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="ulica" type="string">
             <column name="ULICA" length="40" />

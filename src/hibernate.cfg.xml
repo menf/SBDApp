@@ -10,7 +10,7 @@
     <property name="hibernate.show_sql">true</property>
     <!--  <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
 -->
-    <property name="hibernate.default_schema">APP</property>
+    <property name="hibernate.default_schema">ROOT</property>
     <mapping resource="POJO/Oddzial.hbm.xml"/>
     <mapping resource="POJO/Klient.hbm.xml"/>
     <mapping resource="POJO/Nosnik.hbm.xml"/>

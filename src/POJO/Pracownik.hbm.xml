@@ -6,7 +6,7 @@
     <class name="POJO.Pracownik" table="PRACOWNIK" schema="ROOT" optimistic-lock="version">
         <id name="idPracownika" type="int">
             <column name="ID_PRACOWNIKA" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="imie" type="string">
             <column name="IMIE" length="20" />
