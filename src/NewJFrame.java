@@ -72,6 +72,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         moviesTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        orderButton = new javax.swing.JButton();
         addMoviePanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         newMovieTitle = new javax.swing.JTextField();
@@ -85,6 +86,18 @@ public class NewJFrame extends javax.swing.JFrame {
         newMovieDirector = new javax.swing.JComboBox<>();
         addMovieButton = new javax.swing.JButton();
         newMovieError = new javax.swing.JLabel();
+        removeMoviePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        removeMovieError = new javax.swing.JLabel();
+        removeMovieTitle = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        removeMovieCarrier = new javax.swing.JComboBox<>();
+        removeMovieButton = new javax.swing.JButton();
+        transactionPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        transactionTable = new javax.swing.JTable();
+        acceptTransactionButton = new javax.swing.JButton();
+        declineTransactionButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         transakcjeMenu = new javax.swing.JMenu();
         adminMenu = new javax.swing.JMenu();
@@ -318,23 +331,38 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Dostępne pozycje");
 
+        orderButton.setText("Zamów");
+        orderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout moviesPanelLayout = new javax.swing.GroupLayout(moviesPanel);
         moviesPanel.setLayout(moviesPanelLayout);
         moviesPanelLayout.setHorizontalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
             .addGroup(moviesPanelLayout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(moviesPanelLayout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(moviesPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(orderButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         moviesPanelLayout.setVerticalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(moviesPanelLayout.createSequentialGroup()
-                .addGap(0, 56, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(orderButton)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jLabel5.setText("Tytuł");
@@ -381,11 +409,10 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(newMovieTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(newMovieYear)
-                                .addComponent(newMovieQuant)
-                                .addComponent(newMovieCarrier, 0, 130, Short.MAX_VALUE)
-                                .addComponent(newMovieDirector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(newMovieYear, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newMovieQuant, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newMovieCarrier, javax.swing.GroupLayout.Alignment.TRAILING, 0, 130, Short.MAX_VALUE)
+                            .addComponent(newMovieDirector, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(addMovieButton)
                         .addGap(49, 49, 49))))
@@ -419,6 +446,116 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        jLabel10.setText("Wybierz Film");
+
+        removeMovieError.setForeground(new java.awt.Color(255, 0, 0));
+        removeMovieError.setText("Nie można usunąć filmu!");
+
+        removeMovieTitle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel12.setText("Wybierz Nośnik");
+
+        removeMovieCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        removeMovieButton.setText("Usuń Film");
+        removeMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMovieButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout removeMoviePanelLayout = new javax.swing.GroupLayout(removeMoviePanel);
+        removeMoviePanel.setLayout(removeMoviePanelLayout);
+        removeMoviePanelLayout.setHorizontalGroup(
+            removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(removeMovieError)
+                            .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(removeMovieTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(removeMovieCarrier, 0, 155, Short.MAX_VALUE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(removeMovieButton)))
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+        removeMoviePanelLayout.setVerticalGroup(
+            removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(removeMovieTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeMovieCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(removeMovieButton)
+                .addGap(58, 58, 58)
+                .addComponent(removeMovieError)
+                .addGap(23, 23, 23))
+        );
+
+        transactionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(transactionTable);
+
+        acceptTransactionButton.setText("Zatwierdź Transakcję");
+        acceptTransactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptTransactionButtonActionPerformed(evt);
+            }
+        });
+
+        declineTransactionButton.setText("Odrzuć Transakcję");
+        declineTransactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                declineTransactionButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout transactionPanelLayout = new javax.swing.GroupLayout(transactionPanel);
+        transactionPanel.setLayout(transactionPanelLayout);
+        transactionPanelLayout.setHorizontalGroup(
+            transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addGroup(transactionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(acceptTransactionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(declineTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        transactionPanelLayout.setVerticalGroup(
+            transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transactionPanelLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(acceptTransactionButton)
+                    .addComponent(declineTransactionButton))
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
         transakcjeMenu.setText("Transakcje");
         jMenuBar1.add(transakcjeMenu);
 
@@ -433,6 +570,11 @@ public class NewJFrame extends javax.swing.JFrame {
         adminMenu.add(jMenuItem7);
 
         jMenuItem1.setText("Usun Film");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         adminMenu.add(jMenuItem1);
 
         jMenuBar1.add(adminMenu);
@@ -479,6 +621,16 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(addMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(removeMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(transactionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,6 +651,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(addMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(removeMoviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(transactionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -575,7 +737,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void menuLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLogOutMouseClicked
         // TODO add your handling code here:
-         ROLE = -1;
+        ROLE = -1;
         loggedId = -1;
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
@@ -593,6 +755,7 @@ public class NewJFrame extends javax.swing.JFrame {
         moviesPanel.setVisible(false);
         loginPanel.setVisible(false);  
         addMoviePanel.setVisible(true);
+        removeMoviePanel.setVisible(false);
         newMovieError.setVisible(false);
         
         
@@ -658,6 +821,60 @@ public class NewJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_addMovieButtonActionPerformed
+
+    private void removeMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMovieButtonActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_removeMovieButtonActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        List carriers = null, movies = null;
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(false);  
+        addMoviePanel.setVisible(false);
+        removeMoviePanel.setVisible(true);
+        removeMovieError.setVisible(false);
+        
+        
+        removeMovieCarrier.removeAllItems();
+        removeMovieTitle.removeAllItems();
+        
+        session.beginTransaction();
+        Query q = session.createQuery("from Film order by idFilmu");
+        movies = q.list();
+        session.getTransaction().commit();
+        
+        for(Object film : movies){         
+            removeMovieTitle.addItem(((Film)film).getTytul());
+        }
+        
+        session.beginTransaction();
+        q = session.createQuery("from Nosnik order by idNosnika");
+        carriers = q.list();
+        session.getTransaction().commit();
+        
+        for(Object nosnik : carriers){
+            removeMovieCarrier.addItem(((Nosnik)nosnik).getTyp());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderButtonActionPerformed
+
+    private void acceptTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptTransactionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acceptTransactionButtonActionPerformed
+
+    private void declineTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineTransactionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_declineTransactionButtonActionPerformed
  
     private void runQueryBasedOnFirstName() {
         executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
@@ -754,7 +971,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 moviesMenu.setVisible(true);
                 break;
             case 1:  //admin
-                transakcjeMenu.setVisible(true);
                 adminMenu.setVisible(true);
                 menuLogOut.setVisible(true);
                 moviesMenu.setVisible(true);
@@ -824,6 +1040,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 frame.jPanel1.setVisible(false);
                 frame.loginError.setVisible(false);
                 frame.addMoviePanel.setVisible(false);
+                frame.removeMoviePanel.setVisible(false);
                 frame.setVisible(true);
                 
                 
@@ -832,13 +1049,17 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceptTransactionButton;
     private javax.swing.JButton addMovieButton;
     private javax.swing.JPanel addMoviePanel;
     private javax.swing.JMenu adminMenu;
+    private javax.swing.JButton declineTransactionButton;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -856,6 +1077,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
@@ -874,9 +1096,17 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField newMovieQuant;
     private javax.swing.JTextField newMovieTitle;
     private javax.swing.JTextField newMovieYear;
+    private javax.swing.JButton orderButton;
     private javax.swing.JPasswordField passField;
     private javax.swing.JButton queryButton;
+    private javax.swing.JButton removeMovieButton;
+    private javax.swing.JComboBox<String> removeMovieCarrier;
+    private javax.swing.JLabel removeMovieError;
+    private javax.swing.JPanel removeMoviePanel;
+    private javax.swing.JComboBox<String> removeMovieTitle;
     private javax.swing.JTable resultTable;
+    private javax.swing.JPanel transactionPanel;
+    private javax.swing.JTable transactionTable;
     private javax.swing.JMenu transakcjeMenu;
     // End of variables declaration//GEN-END:variables
 }
