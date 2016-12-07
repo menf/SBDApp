@@ -1,3 +1,4 @@
+
 import POJO.Film;
 import POJO.Klient;
 import POJO.Nosnik;
@@ -10,25 +11,24 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import util.NewHibernateUtil;
-        
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author menf
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    private static String QUERY_BASED_ON_FIRST_NAME="from Klient a where a.imie like '";
-private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko like '";
+    private static String QUERY_BASED_ON_FIRST_NAME = "from Klient a where a.imie like '";
+    private static String QUERY_BASED_ON_LAST_NAME = "from Klient a where a.nazwisko like '";
     private Session session;
-    private int ROLE;
-    private int loggedId;
-    
+    private int ROLE = -1;
+    private int loggedId = -1;
+
     /**
      * Creates new form NewJFrame
      */
@@ -46,6 +46,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     private void initComponents() {
 
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         loginPanel = new javax.swing.JPanel();
         passField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
@@ -69,19 +70,18 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         moviesPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         moviesTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        transakcjeMenu = new javax.swing.JMenu();
+        adminMenu = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem_Login = new javax.swing.JMenuItem();
-        jMenu_Movies = new javax.swing.JMenu();
+        moviesMenu = new javax.swing.JMenu();
+        menuLogOut = new javax.swing.JMenu();
 
         jMenuItem5.setText("jMenuItem5");
+
+        jMenuItem6.setText("jMenuItem6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -299,79 +299,59 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         moviesTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(moviesTable);
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Dostępne pozycje");
+
         javax.swing.GroupLayout moviesPanelLayout = new javax.swing.GroupLayout(moviesPanel);
         moviesPanel.setLayout(moviesPanelLayout);
         moviesPanelLayout.setHorizontalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+            .addGroup(moviesPanelLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         moviesPanelLayout.setVerticalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(moviesPanelLayout.createSequentialGroup()
-                .addGap(0, 106, Short.MAX_VALUE)
+                .addGap(0, 56, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu2.setText("File");
+        transakcjeMenu.setText("Transakcje");
+        jMenuBar1.add(transakcjeMenu);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
+        adminMenu.setText("Administracja");
 
-        jMenuItem3.setText("jMenuItem3");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
+        jMenuItem7.setText("Dodaj Film");
+        adminMenu.add(jMenuItem7);
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
+        jMenuItem1.setText("Usun Film");
+        adminMenu.add(jMenuItem1);
 
-        jMenu1.setText("jMenu1");
+        jMenuBar1.add(adminMenu);
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenu1.add(jMenuItem4);
-
-        jMenu2.add(jMenu1);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Edit");
-        jMenuBar1.add(jMenu3);
-
-        jMenu5.setText("Konto");
-
-        jMenuItem_Login.setText("Wyloguj");
-        jMenuItem_Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_LoginActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem_Login);
-        jMenuItem_Login.getAccessibleContext().setAccessibleName("jMenuItem_Login");
-
-        jMenuBar1.add(jMenu5);
-        jMenu5.getAccessibleContext().setAccessibleName("jMenu_User");
-        jMenu5.getAccessibleContext().setAccessibleDescription("");
-
-        jMenu_Movies.setText("Baza FIlmów");
-        jMenu_Movies.addMouseListener(new java.awt.event.MouseAdapter() {
+        moviesMenu.setText("Baza FIlmów");
+        moviesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu_MoviesMouseClicked(evt);
+                moviesMenuMouseClicked(evt);
             }
         });
-        jMenu_Movies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu_MoviesActionPerformed(evt);
+        jMenuBar1.add(moviesMenu);
+
+        menuLogOut.setText("Wyloguj");
+        menuLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuLogOutMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu_Movies);
+        jMenuBar1.add(menuLogOut);
+        menuLogOut.getAccessibleContext().setAccessibleName("jMenu_User");
+        menuLogOut.getAccessibleContext().setAccessibleDescription("");
 
         setJMenuBar(jMenuBar1);
 
@@ -416,208 +396,204 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        jPanel1.setVisible(false);
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);
-        jPanel2.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-       
-        jPanel2.setVisible(false);
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);
-        jPanel1.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void queryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryButtonActionPerformed
- if(!firstNameTextField.getText().trim().equals("")) {
-        runQueryBasedOnFirstName();
-    } else if(!lastNameTextField.getText().trim().equals("")) {
-        runQueryBasedOnLastName();
-    }        // TODO add your handling code here:
+        if (!firstNameTextField.getText().trim().equals("")) {
+            runQueryBasedOnFirstName();
+        } else if (!lastNameTextField.getText().trim().equals("")) {
+            runQueryBasedOnLastName();
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_queryButtonActionPerformed
 
-    private void jMenuItem_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_LoginActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String pass = new String(passField.getPassword());
+        if (!logField.getText().trim().equals("") && pass.length() > 0) {
+            loginError.setVisible(false);
+            try {
+                List uzytkownicy;
+                session.beginTransaction();
+
+                Query query = session.createQuery("from Klient  where login is '" + logField.getText() + "' and haslo is '" + pass + "'");
+                uzytkownicy = query.list();
+                session.getTransaction().commit();
+                if (!uzytkownicy.isEmpty()) {
+                    ROLE = 0;
+                    loggedId = ((Klient) uzytkownicy.get(0)).getIdKlienta();
+                    loginPanel.setVisible(false);
+                    jPanel1.setVisible(true);
+                    
+                //loginError.setVisible(true);
+                
+
+            }else {
+                    session.beginTransaction();
+                    query = session.createQuery("from Pracownik  where login is '" + logField.getText() + "' and haslo is '" + pass + "'");
+                    uzytkownicy = query.list();
+                    if (!uzytkownicy.isEmpty()) {
+                        Pracownik p = (Pracownik) uzytkownicy.get(0);
+                        if (p.getIdStanowiska() == 1) {
+                            ROLE = 1;
+                        } else {
+                            ROLE = 2;
+                        }
+                        loggedId = ((Pracownik) uzytkownicy.get(0)).getIdPracownika();
+                        loginPanel.setVisible(false);
+                        jPanel1.setVisible(true);
+                    }
+                    loginError.setVisible(true);
+                    session.getTransaction().commit();
+                }
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }
+        }
+        setVisibilities();
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void moviesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviesMenuMouseClicked
         // TODO add your handling code here:
-        ROLE=-1;
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        loginPanel.setVisible(false);
+        moviesPanel.setVisible(true);
+        showMovies();
+    }//GEN-LAST:event_moviesMenuMouseClicked
+
+    private void menuLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLogOutMouseClicked
+        // TODO add your handling code here:
+         ROLE = -1;
         loggedId = -1;
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         moviesPanel.setVisible(false);
         loginPanel.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_LoginActionPerformed
-   
-    private void jMenu_MoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_MoviesActionPerformed
-  
-    }//GEN-LAST:event_jMenu_MoviesActionPerformed
-
-    private void jMenu_MoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_MoviesMouseClicked
-          jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
-        loginPanel.setVisible(false);
-        moviesPanel.setVisible(true);
-        showMovies();
-        
-    }//GEN-LAST:event_jMenu_MoviesMouseClicked
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String pass = new String(passField.getPassword());
-        if(!logField.getText().trim().equals("")&&pass.length()>0)
-        { loginError.setVisible(false);
-            try {
-                List uzytkownicy;
-                session.beginTransaction();
-
-                Query query=  session.createQuery("from Klient  where login is '"+logField.getText()+"' and haslo is '"+pass+"'");
-                uzytkownicy = query.list();
-                session.getTransaction().commit();
-                if(!uzytkownicy.isEmpty())
-                {
-                    ROLE=0;
-                    loggedId = ((Klient)uzytkownicy.get(0)).getIdKlienta();
-                    loginPanel.setVisible(false);
-                    jPanel1.setVisible(true);
-    }//GEN-LAST:event_loginButtonActionPerformed
- else
-    {
-        session.beginTransaction();
-      query=  session.createQuery("from Pracownik  where login is '"+logField.getText()+"' and haslo is '"+pass+"'");
-       uzytkownicy = query.list();
-         if(!uzytkownicy.isEmpty())
-     { Pracownik p = (Pracownik) uzytkownicy.get(0);
-      if (p.getIdStanowiska()==1)
-      {
-          ROLE=1;
-      }
-      else
-      {
-          ROLE=2;
-      }
-      loggedId = ((Pracownik)uzytkownicy.get(0)).getIdPracownika();
-loginPanel.setVisible(false);
-        jPanel1.setVisible(true);
-    }  
-        loginError.setVisible(true); 
-    }
-        //loginError.setVisible(true);
-    session.getTransaction().commit();
-   
-}
-  catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}}
+        setVisibilities();
+    }//GEN-LAST:event_menuLogOutMouseClicked
+ 
     private void runQueryBasedOnFirstName() {
-    executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
-}
-    
-private void runQueryBasedOnLastName() {
-    executeHQLQuery(QUERY_BASED_ON_LAST_NAME + lastNameTextField.getText() + "%'");
-}
-   private void displayResult(List resultList) {
-       
-    
-    Vector<String> tableHeaders = new Vector<>();
-    Vector tableData = new Vector();
-    tableHeaders.add("Id"); 
-    tableHeaders.add("Imię");
-    tableHeaders.add("Nazwisko");
-    tableHeaders.add("Data urodzenia");
-   for(Object o : resultList) {
-        Klient actor = (Klient)o;
-        Vector<Object> oneRow = new Vector<>();
-        oneRow.add(actor.getIdKlienta());
-        oneRow.add(actor.getImie());
-        oneRow.add(actor.getNazwisko());
-        oneRow.add(actor.getDataUrodzenia());
-        tableData.add(oneRow);
+        executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
     }
-    resultTable.setModel(new DefaultTableModel(tableData, tableHeaders){
-        public boolean isCellEditable(int rowIndex, int mColIndex) {
-        return false;
-      }});
-} 
-   
-   private void showMovies() {
-    List moviesList = null, directorList = null;
-     try {
-        session.beginTransaction();
-        Query q = session.createQuery("from Film");
-        moviesList = q.list();
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-    Vector<String> tableHeaders = new Vector<>();
-    Vector tableData = new Vector();
-    tableHeaders.add("Tytuł"); 
-    tableHeaders.add("Rok Produkcji");
-    tableHeaders.add("Reżyser");
-    tableHeaders.add("Nośnik");
-    tableHeaders.add("Dostępność");
-    if(!moviesList.isEmpty()){
-        Film film;
-        session.beginTransaction();
-        Query q;   
-        
-        for(Object o : moviesList) {     
-        film = (Film)o;
-        Vector<Object> oneRow = new Vector<>();
-        q = session.createQuery("from Rezyser a where a.idRezysera IS "+film.getIdRezysera().toString());
-        directorList = q.list();
-        q = session.createQuery("from Nosnik a where a.idNosnika IS "+film.getIdNosnika().toString());
-        oneRow.add(film.getTytul());
-        oneRow.add(film.getRokProdukcji());
-        oneRow.add(((Rezyser)(directorList.get(0))).getNazwisko());
-        oneRow.add(((Nosnik)q.list().get(0)).getTyp());
-        if(film.getIlosc()>0){
-            oneRow.add("Dostępny");
-        }
-        else{
-            oneRow.add("Niedostępny");
-        }
-        tableData.add(oneRow);
-    }
-    session.getTransaction().commit();
-    moviesTable.setModel(new DefaultTableModel(tableData, tableHeaders){
-        public boolean isCellEditable(int rowIndex, int mColIndex) {
-        return false;
-      }});
-    }
-   
-} 
-   
-   
 
-   
-   public void initConnection(){
-       session = NewHibernateUtil.getSessionFactory().openSession();
-   }
-   
-    private void executeHQLQuery(String hql) {
-    try {
-        
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List resultList =   q.list();
-        displayResult(resultList);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
+    private void runQueryBasedOnLastName() {
+        executeHQLQuery(QUERY_BASED_ON_LAST_NAME + lastNameTextField.getText() + "%'");
     }
-}
-    
-    
-    
-    
-    
-    
-    
-    
+
+    private void displayResult(List resultList) {
+
+        Vector<String> tableHeaders = new Vector<>();
+        Vector tableData = new Vector();
+        tableHeaders.add("Id");
+        tableHeaders.add("Imię");
+        tableHeaders.add("Nazwisko");
+        tableHeaders.add("Data urodzenia");
+        for (Object o : resultList) {
+            Klient actor = (Klient) o;
+            Vector<Object> oneRow = new Vector<>();
+            oneRow.add(actor.getIdKlienta());
+            oneRow.add(actor.getImie());
+            oneRow.add(actor.getNazwisko());
+            oneRow.add(actor.getDataUrodzenia());
+            tableData.add(oneRow);
+        }
+        resultTable.setModel(new DefaultTableModel(tableData, tableHeaders) {
+            public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+            }
+        });
+    }
+
+    private void showMovies() {
+        List moviesList = null, directorList = null;
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("from Film");
+            moviesList = q.list();
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+        Vector<String> tableHeaders = new Vector<>();
+        Vector tableData = new Vector();
+        tableHeaders.add("Tytuł");
+        tableHeaders.add("Rok Produkcji");
+        tableHeaders.add("Reżyser");
+        tableHeaders.add("Nośnik");
+        tableHeaders.add("Dostępność");
+        if (!moviesList.isEmpty()) {
+            Film film;
+            session.beginTransaction();
+            Query q;
+
+            for (Object o : moviesList) {
+                film = (Film) o;
+                Vector<Object> oneRow = new Vector<>();
+                q = session.createQuery("from Rezyser a where a.idRezysera IS " + film.getIdRezysera().toString());
+                directorList = q.list();
+                q = session.createQuery("from Nosnik a where a.idNosnika IS " + film.getIdNosnika().toString());
+                oneRow.add(film.getTytul());
+                oneRow.add(film.getRokProdukcji());
+                oneRow.add(((Rezyser) (directorList.get(0))).getNazwisko());
+                oneRow.add(((Nosnik) q.list().get(0)).getTyp());
+                if (film.getIlosc() > 0) {
+                    oneRow.add("Dostępny");
+                } else {
+                    oneRow.add("Niedostępny");
+                }
+                tableData.add(oneRow);
+            }
+            session.getTransaction().commit();
+            moviesTable.setModel(new DefaultTableModel(tableData, tableHeaders) {
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    return false;
+                }
+            });
+        }
+
+    }
+
+    private void setVisibilities() {
+
+        transakcjeMenu.setVisible(false);
+        adminMenu.setVisible(false);
+        menuLogOut.setVisible(false);
+        moviesMenu.setVisible(false);
+
+        switch (ROLE) {
+            case 0:  //uzytkownik
+                menuLogOut.setVisible(true);
+                moviesMenu.setVisible(true);
+                break;
+            case 1:  //admin
+                transakcjeMenu.setVisible(true);
+                adminMenu.setVisible(true);
+                menuLogOut.setVisible(true);
+                moviesMenu.setVisible(true);
+                break;
+            case 2:  //pracownik
+                menuLogOut.setVisible(true);
+                moviesMenu.setVisible(true);
+                break;
+            default:
+
+        }
+    }
+
+    public void initConnection() {
+        session = NewHibernateUtil.getSessionFactory().openSession();
+    }
+
+    private void executeHQLQuery(String hql) {
+        try {
+
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResult(resultList);
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -650,35 +626,33 @@ private void runQueryBasedOnLastName() {
             public void run() {
                 NewJFrame frame = new NewJFrame();
                 frame.initConnection();
-                frame.setVisible(true);
+                frame.setVisibilities();
                 frame.jPanel2.setVisible(false);
-        frame.moviesPanel.setVisible(false);
-         frame.loginPanel.setVisible(true);
-         frame.jPanel1.setVisible(false);
-         frame.loginError.setVisible(false);
+                frame.moviesPanel.setVisible(false);
+                frame.loginPanel.setVisible(true);
+                frame.jPanel1.setVisible(false);
+                frame.loginError.setVisible(false);
+                frame.setVisible(true);
+                
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu adminMenu;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem_Login;
-    private javax.swing.JMenu jMenu_Movies;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -691,10 +665,13 @@ private void runQueryBasedOnLastName() {
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel loginError;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JMenu menuLogOut;
+    private javax.swing.JMenu moviesMenu;
     private javax.swing.JPanel moviesPanel;
     private javax.swing.JTable moviesTable;
     private javax.swing.JPasswordField passField;
     private javax.swing.JButton queryButton;
     private javax.swing.JTable resultTable;
+    private javax.swing.JMenu transakcjeMenu;
     // End of variables declaration//GEN-END:variables
 }
