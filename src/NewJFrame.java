@@ -5,6 +5,7 @@ import POJO.Nosnik;
 import POJO.Pracownik;
 import POJO.Rezyser;
 import POJO.Stanowisko;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JTable;
@@ -87,12 +88,14 @@ public class NewJFrame extends javax.swing.JFrame {
         newMovieDirector = new javax.swing.JComboBox<>();
         addMovieButton = new javax.swing.JButton();
         newMovieError = new javax.swing.JLabel();
+        addMovieSuccess = new javax.swing.JLabel();
         removeMoviePanel = new javax.swing.JPanel();
         removeMovieError = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         removeMovieButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         removeMovieTable = new javax.swing.JTable();
+        removeMovieSuccess = new javax.swing.JLabel();
         transactionPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         transactionTable = new javax.swing.JTable();
@@ -389,6 +392,9 @@ public class NewJFrame extends javax.swing.JFrame {
         newMovieError.setForeground(new java.awt.Color(255, 0, 51));
         newMovieError.setText("Wprowadź poprawne dane!");
 
+        addMovieSuccess.setForeground(new java.awt.Color(51, 255, 0));
+        addMovieSuccess.setText("Dodano film do bazy!");
+
         javax.swing.GroupLayout addMoviePanelLayout = new javax.swing.GroupLayout(addMoviePanel);
         addMoviePanel.setLayout(addMoviePanelLayout);
         addMoviePanelLayout.setHorizontalGroup(
@@ -398,6 +404,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addMoviePanelLayout.createSequentialGroup()
                         .addComponent(newMovieError)
+                        .addGap(63, 63, 63)
+                        .addComponent(addMovieSuccess)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(addMoviePanelLayout.createSequentialGroup()
                         .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +450,9 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(newMovieDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addMovieButton))
                 .addGap(33, 33, 33)
-                .addComponent(newMovieError)
+                .addGroup(addMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newMovieError)
+                    .addComponent(addMovieSuccess))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -473,6 +483,9 @@ public class NewJFrame extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(removeMovieTable);
 
+        removeMovieSuccess.setForeground(new java.awt.Color(0, 204, 0));
+        removeMovieSuccess.setText("Pomyślnie usunięto film!");
+
         javax.swing.GroupLayout removeMoviePanelLayout = new javax.swing.GroupLayout(removeMoviePanel);
         removeMoviePanel.setLayout(removeMoviePanelLayout);
         removeMoviePanelLayout.setHorizontalGroup(
@@ -483,7 +496,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(removeMovieError)
                         .addGap(33, 33, 33)
-                        .addComponent(removeMovieButton))
+                        .addComponent(removeMovieButton)
+                        .addGap(40, 40, 40)
+                        .addComponent(removeMovieSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(removeMoviePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -494,18 +509,23 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         removeMoviePanelLayout.setVerticalGroup(
             removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeMoviePanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeMoviePanelLayout.createSequentialGroup()
+                .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(removeMoviePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(removeMovieError))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removeMovieSuccess))
                     .addGroup(removeMoviePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeMovieButton)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(removeMoviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(removeMovieError))
+                            .addGroup(removeMoviePanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeMovieButton)))))
                 .addGap(23, 23, 23))
         );
 
@@ -763,7 +783,7 @@ public class NewJFrame extends javax.swing.JFrame {
         addMoviePanel.setVisible(true);
         removeMoviePanel.setVisible(false);
         newMovieError.setVisible(false);
-        
+        addMovieSuccess.setVisible(false);
         
         newMovieCarrier.removeAllItems();
         
@@ -793,6 +813,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void addMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMovieButtonActionPerformed
 
         newMovieError.setVisible(false);
+        addMovieSuccess.setVisible(false);
         if(newMovieTitle.getText().trim().equals("") || 
            Integer.parseInt(newMovieYear.getText())<1895 || 
            Integer.parseInt(newMovieQuant.getText()) < 0 || 
@@ -813,11 +834,13 @@ public class NewJFrame extends javax.swing.JFrame {
             session.beginTransaction();
             
             session.save(newFilm);
-            }catch(Exception e){
-                
+            addMovieSuccess.setVisible(true);
+            }catch(HibernateException he){
+                he.printStackTrace();
             }
             finally{
                 session.getTransaction().commit();
+                newFilm = null;
             }
             
            
@@ -831,21 +854,37 @@ public class NewJFrame extends javax.swing.JFrame {
     private void removeMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMovieButtonActionPerformed
         // TODO add your handling code here:
         
-
+        int id = Integer.parseInt(removeMovieTable.getModel().getValueAt(removeMovieTable.getSelectedRow(), 0).toString());
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("delete Film where idFilmu =:id");
+            query.setParameter("id", id);
+            int result = query.executeUpdate();
+ 
+            if (result > 0) {
+                removeMovieSuccess.setVisible(true);
+                
+            }
+            
+        }catch(HibernateException he){
+            he.printStackTrace();
+            removeMovieError.setVisible(true);
+        }
+        finally{
+            session.getTransaction().commit();
+            reloadRemoveMoviesTable();
+        }
+        
         
     }//GEN-LAST:event_removeMovieButtonActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    
+    private void reloadRemoveMoviesTable(){
         
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);  
-        addMoviePanel.setVisible(false);
         removeMoviePanel.setVisible(true);
-        removeMovieError.setVisible(false);
         
         List moviesList = null, directorList = null;
+        removeMovieTable.removeAll();
         try {
             session.beginTransaction();
             Query q = session.createQuery("from Film");
@@ -893,6 +932,20 @@ public class NewJFrame extends javax.swing.JFrame {
             });
              removeMovieTable.removeColumn(moviesTable.getColumnModel().getColumn(0));
         }
+    }
+    
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(false);  
+        addMoviePanel.setVisible(false);
+        removeMoviePanel.setVisible(true);
+        removeMovieError.setVisible(false);
+        removeMovieSuccess.setVisible(false);
+        
+        reloadRemoveMoviesTable();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
@@ -1091,6 +1144,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton acceptTransactionButton;
     private javax.swing.JButton addMovieButton;
     private javax.swing.JPanel addMoviePanel;
+    private javax.swing.JLabel addMovieSuccess;
     private javax.swing.JMenu adminMenu;
     private javax.swing.JButton declineTransactionButton;
     private javax.swing.JTextField firstNameTextField;
@@ -1141,6 +1195,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton removeMovieButton;
     private javax.swing.JLabel removeMovieError;
     private javax.swing.JPanel removeMoviePanel;
+    private javax.swing.JLabel removeMovieSuccess;
     private javax.swing.JTable removeMovieTable;
     private javax.swing.JTable resultTable;
     private javax.swing.JPanel transactionPanel;
