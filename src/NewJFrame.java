@@ -1,6 +1,7 @@
+import POJO.Film;
 import POJO.Klient;
+import POJO.Rezyser;
 import java.util.List;
-import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
@@ -22,7 +23,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private static String QUERY_BASED_ON_FIRST_NAME="from Klient a where a.imie like '";
 private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko like '";
-    
+    private Session session;
     
     /**
      * Creates new form NewJFrame
@@ -40,6 +41,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem5 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +54,18 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        loginPanel = new javax.swing.JPanel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton3 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
+        moviesPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        moviesTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        detailsTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -60,7 +74,11 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem_Login = new javax.swing.JMenuItem();
+        jMenu_Movies = new javax.swing.JMenu();
+
+        jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +94,19 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        resultTable.setColumnSelectionAllowed(true);
+        resultTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(resultTable);
+        resultTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jLabel1.setText("Imie");
         jLabel1.setToolTipText("");
@@ -125,7 +154,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
                 .addComponent(jButton1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,7 +197,130 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
                 .addComponent(jLabel3)
                 .addGap(71, 71, 71)
                 .addComponent(jButton2)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+
+        loginPanel.setName("jPanel_Login"); // NOI18N
+
+        jButton3.setLabel("Zaloguj");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        label1.setMinimumSize(new java.awt.Dimension(40, 20));
+        label1.setText("Login:");
+
+        label2.setText("Hasło:");
+
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setText("Logowanie");
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(loginPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(loginPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
+                .addGap(135, 135, 135))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addGap(12, 12, 12)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
+                .addGap(53, 53, 53)
+                .addComponent(jButton3)
+                .addGap(105, 105, 105))
+        );
+
+        label2.getAccessibleContext().setAccessibleName("Hasło:");
+
+        moviesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        moviesTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(moviesTable);
+
+        detailsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(detailsTable);
+
+        javax.swing.GroupLayout moviesPanelLayout = new javax.swing.GroupLayout(moviesPanel);
+        moviesPanel.setLayout(moviesPanelLayout);
+        moviesPanelLayout.setHorizontalGroup(
+            moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(moviesPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        moviesPanelLayout.setVerticalGroup(
+            moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(moviesPanelLayout.createSequentialGroup()
+                .addGap(0, 106, Short.MAX_VALUE)
+                .addGroup(moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
         jMenu2.setText("File");
@@ -204,8 +356,33 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         jMenu3.setText("Edit");
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("jMenu4");
-        jMenuBar1.add(jMenu4);
+        jMenu5.setText("Konto");
+
+        jMenuItem_Login.setText("Zaloguj");
+        jMenuItem_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_LoginActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem_Login);
+        jMenuItem_Login.getAccessibleContext().setAccessibleName("jMenuItem_Login");
+
+        jMenuBar1.add(jMenu5);
+        jMenu5.getAccessibleContext().setAccessibleName("jMenu_User");
+        jMenu5.getAccessibleContext().setAccessibleDescription("");
+
+        jMenu_Movies.setText("Baza FIlmów");
+        jMenu_Movies.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu_MoviesMouseClicked(evt);
+            }
+        });
+        jMenu_Movies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu_MoviesActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu_Movies);
 
         setJMenuBar(jMenuBar1);
 
@@ -216,13 +393,36 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(moviesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(moviesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        loginPanel.getAccessibleContext().setAccessibleName("jPanel_Login");
+        moviesPanel.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,13 +430,18 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         jPanel1.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(false);
         jPanel2.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-       jPanel1.setVisible(true);
+       
         jPanel2.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(false);
+        jPanel1.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void queryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryButtonActionPerformed
@@ -247,6 +452,31 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     }        // TODO add your handling code here:
     }//GEN-LAST:event_queryButtonActionPerformed
 
+    private void jMenuItem_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_LoginActionPerformed
+        // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        moviesPanel.setVisible(false);
+        loginPanel.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_LoginActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenu_MoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_MoviesActionPerformed
+  
+    }//GEN-LAST:event_jMenu_MoviesActionPerformed
+
+    private void jMenu_MoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_MoviesMouseClicked
+          jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        loginPanel.setVisible(false);
+        moviesPanel.setVisible(true);
+        showMovies();
+        
+    }//GEN-LAST:event_jMenu_MoviesMouseClicked
+
     private void runQueryBasedOnFirstName() {
     executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
 }
@@ -255,14 +485,14 @@ private void runQueryBasedOnLastName() {
     executeHQLQuery(QUERY_BASED_ON_LAST_NAME + lastNameTextField.getText() + "%'");
 }
    private void displayResult(List resultList) {
+       
+    
     Vector<String> tableHeaders = new Vector<>();
     Vector tableData = new Vector();
     tableHeaders.add("Id"); 
     tableHeaders.add("Imię");
     tableHeaders.add("Nazwisko");
     tableHeaders.add("Data urodzenia");
-
-    
    for(Object o : resultList) {
         Klient actor = (Klient)o;
         Vector<Object> oneRow = new Vector<>();
@@ -274,10 +504,53 @@ private void runQueryBasedOnLastName() {
     }
     resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
 } 
-    //
+   
+   private void showMovies() {
+    List moviesList = null, directorList = null;
+     try {
+        session.beginTransaction();
+        Query q = session.createQuery("from Film");
+        moviesList = q.list();
+        session.getTransaction().commit();
+    } catch (HibernateException he) {
+        he.printStackTrace();
+    }
+    Vector<String> tableHeaders = new Vector<>();
+    Vector tableData = new Vector();
+    tableHeaders.add("Tytuł"); 
+    tableHeaders.add("Rok Produkcji");
+    tableHeaders.add("Reżyser");
+    if(!moviesList.isEmpty()){
+        Film film;
+        session.beginTransaction();
+        Query q;   
+        
+        for(Object o : moviesList) {     
+        film = (Film)o;
+        Vector<Object> oneRow = new Vector<>();
+        q = session.createQuery("from Rezyser a where a.idRezysera IS "+film.getIdRezysera().toString());
+        directorList = q.list();
+        oneRow.add(film.getTytul());
+        oneRow.add(film.getRokProdukcji());
+        oneRow.add(((Rezyser)(directorList.get(0))).getNazwisko());
+        tableData.add(oneRow);
+    }
+    session.getTransaction().commit();
+    moviesTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+    }
+   
+} 
+   
+   
+
+   
+   public void initConnection(){
+       session = NewHibernateUtil.getSessionFactory().openSession();
+   }
+   
     private void executeHQLQuery(String hql) {
     try {
-        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        
         session.beginTransaction();
         Query q = session.createQuery(hql);
         List resultList =   q.list();
@@ -325,31 +598,48 @@ private void runQueryBasedOnLastName() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                NewJFrame frame = new NewJFrame();
+                frame.initConnection();
+                frame.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable detailsTable;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem_Login;
+    private javax.swing.JMenu jMenu_Movies;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
     private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JPanel moviesPanel;
+    private javax.swing.JTable moviesTable;
     private javax.swing.JButton queryButton;
     private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
