@@ -284,6 +284,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
+        moviesTable.setAutoCreateRowSorter(true);
         moviesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
