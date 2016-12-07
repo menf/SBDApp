@@ -26,6 +26,7 @@ public class NewJFrame extends javax.swing.JFrame {
 private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko like '";
     private Session session;
     private int ROLE;
+    private int loggedId;
     
     /**
      * Creates new form NewJFrame
@@ -496,6 +497,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
                 if(!uzytkownicy.isEmpty())
                 {
                     ROLE=0;
+                    loggedId = ((Klient)uzytkownicy.get(0)).getIdKlienta();
                     loginPanel.setVisible(false);
                     jPanel1.setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -514,6 +516,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
       {
           ROLE=2;
       }
+      loggedId = ((Pracownik)uzytkownicy.get(0)).getIdPracownika();
 loginPanel.setVisible(false);
         jPanel1.setVisible(true);
     }  
