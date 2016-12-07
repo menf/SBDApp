@@ -1,5 +1,6 @@
 import POJO.Film;
 import POJO.Klient;
+import POJO.Pracownik;
 import POJO.Rezyser;
 import java.util.List;
 import java.util.Vector;
@@ -24,6 +25,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private static String QUERY_BASED_ON_FIRST_NAME="from Klient a where a.imie like '";
 private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko like '";
     private Session session;
+    private int ROLE;
     
     /**
      * Creates new form NewJFrame
@@ -42,6 +44,14 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
     private void initComponents() {
 
         jMenuItem5 = new javax.swing.JMenuItem();
+        loginPanel = new javax.swing.JPanel();
+        passField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        logField = new javax.swing.JTextField();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
+        loginError = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -54,13 +64,6 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        loginPanel = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
         moviesPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         moviesTable = new javax.swing.JTable();
@@ -81,6 +84,73 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         jMenuItem5.setText("jMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        loginPanel.setName("jPanel_Login"); // NOI18N
+
+        loginButton.setLabel("Zaloguj");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        label1.setMinimumSize(new java.awt.Dimension(40, 20));
+        label1.setText("Login:");
+
+        label2.setText("Hasło:");
+
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setText("Logowanie");
+
+        loginError.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        loginError.setForeground(new java.awt.Color(255, 0, 51));
+        loginError.setText("Bląd uwierzytelniania");
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(logField)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(loginButton)))
+                .addGap(135, 135, 135))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addComponent(loginError, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(logField))
+                .addGap(12, 12, 12)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passField))
+                .addGap(18, 18, 18)
+                .addComponent(loginButton)
+                .addGap(30, 30, 30)
+                .addComponent(loginError)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
 
         jButton1.setText("panel 1");
 
@@ -200,68 +270,6 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
-        loginPanel.setName("jPanel_Login"); // NOI18N
-
-        jButton3.setLabel("Zaloguj");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        label1.setMinimumSize(new java.awt.Dimension(40, 20));
-        label1.setText("Login:");
-
-        label2.setText("Hasło:");
-
-        label3.setAlignment(java.awt.Label.CENTER);
-        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        label3.setText("Logowanie");
-
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(loginPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(loginPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
-                .addGap(135, 135, 135))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addGap(12, 12, 12)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
-                .addGap(53, 53, 53)
-                .addComponent(jButton3)
-                .addGap(105, 105, 105))
-        );
-
-        label2.getAccessibleContext().setAccessibleName("Hasło:");
-
         moviesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -358,7 +366,7 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
 
         jMenu5.setText("Konto");
 
-        jMenuItem_Login.setText("Zaloguj");
+        jMenuItem_Login.setText("Wyloguj");
         jMenuItem_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_LoginActionPerformed(evt);
@@ -454,16 +462,13 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
 
     private void jMenuItem_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_LoginActionPerformed
         // TODO add your handling code here:
+        ROLE=-1;
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         moviesPanel.setVisible(false);
         loginPanel.setVisible(true);
     }//GEN-LAST:event_jMenuItem_LoginActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+   
     private void jMenu_MoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_MoviesActionPerformed
   
     }//GEN-LAST:event_jMenu_MoviesActionPerformed
@@ -477,6 +482,51 @@ private static String QUERY_BASED_ON_LAST_NAME="from Klient a where a.nazwisko l
         
     }//GEN-LAST:event_jMenu_MoviesMouseClicked
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String pass = new String(passField.getPassword());
+        if(!logField.getText().trim().equals("")&&pass.length()>0)
+        { loginError.setVisible(false);
+            try {
+                List uzytkownicy;
+                session.beginTransaction();
+
+                Query query=  session.createQuery("from Klient  where login is '"+logField.getText()+"' and haslo is '"+pass+"'");
+                uzytkownicy = query.list();
+                session.getTransaction().commit();
+                if(!uzytkownicy.isEmpty())
+                {
+                    ROLE=0;
+                    loginPanel.setVisible(false);
+                    jPanel1.setVisible(true);
+    }//GEN-LAST:event_loginButtonActionPerformed
+ else
+    {
+        session.beginTransaction();
+      query=  session.createQuery("from Pracownik  where login is '"+logField.getText()+"' and haslo is '"+pass+"'");
+       uzytkownicy = query.list();
+         if(!uzytkownicy.isEmpty())
+     { Pracownik p = (Pracownik) uzytkownicy.get(0);
+      if (p.getIdStanowiska()==1)
+      {
+          ROLE=1;
+      }
+      else
+      {
+          ROLE=2;
+      }
+loginPanel.setVisible(false);
+        jPanel1.setVisible(true);
+    }  
+        loginError.setVisible(true); 
+    }
+        //loginError.setVisible(true);
+    session.getTransaction().commit();
+   
+}
+  catch (HibernateException he) {
+        he.printStackTrace();
+    }
+}}
     private void runQueryBasedOnFirstName() {
     executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
 }
@@ -502,7 +552,10 @@ private void runQueryBasedOnLastName() {
         oneRow.add(actor.getDataUrodzenia());
         tableData.add(oneRow);
     }
-    resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+    resultTable.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int rowIndex, int mColIndex) {
+        return false;
+      }});
 } 
    
    private void showMovies() {
@@ -536,7 +589,10 @@ private void runQueryBasedOnLastName() {
         tableData.add(oneRow);
     }
     session.getTransaction().commit();
-    moviesTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+    moviesTable.setModel(new DefaultTableModel(tableData, tableHeaders){
+        public boolean isCellEditable(int rowIndex, int mColIndex) {
+        return false;
+      }});
     }
    
 } 
@@ -601,6 +657,11 @@ private void runQueryBasedOnLastName() {
                 NewJFrame frame = new NewJFrame();
                 frame.initConnection();
                 frame.setVisible(true);
+                frame.jPanel2.setVisible(false);
+        frame.moviesPanel.setVisible(false);
+         frame.loginPanel.setVisible(true);
+         frame.jPanel1.setVisible(false);
+         frame.loginError.setVisible(false);
             }
         });
     }
@@ -610,7 +671,6 @@ private void runQueryBasedOnLastName() {
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -628,18 +688,20 @@ private void runQueryBasedOnLastName() {
     private javax.swing.JMenu jMenu_Movies;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JTextField logField;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JLabel loginError;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel moviesPanel;
     private javax.swing.JTable moviesTable;
+    private javax.swing.JPasswordField passField;
     private javax.swing.JButton queryButton;
     private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
