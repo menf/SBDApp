@@ -586,10 +586,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     loginPanel.setVisible(false);
                     showMovies();
                     moviesPanel.setVisible(true);
-                    
-                    
-                //loginError.setVisible(true);
-                
+                         
 
             }else {
                     session = NewHibernateUtil.getSessionFactory().openSession();
@@ -614,9 +611,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         
                     }
                     loginError.setVisible(true);
-                    session.getTransaction().commit();
                 }
-                //session.close();
             } catch (HibernateException he) {
                 he.printStackTrace();
             }
@@ -949,7 +944,7 @@ Date date = new Date();
                 Vector<Object> oneRow = new Vector<>();
                 q = session.createQuery("from Film a where a.idFilmu IS " + transakcja.getIdFilmu().toString());
                 filmList = q.list();
-                session.getTransaction().commit();
+
                 oneRow.add(transakcja.getIdTransakcji());
                 oneRow.add(transakcja.getIdKlienta());
                 oneRow.add(((Film)filmList.get(0)).getTytul());
