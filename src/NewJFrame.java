@@ -1,6 +1,7 @@
 
 import POJO.Film;
 import POJO.Gatunek;
+import POJO.GatunekFilmId;
 import POJO.Klient;
 import POJO.Nosnik;
 import POJO.Pracownik;
@@ -12,7 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -211,6 +214,11 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         moviesTable.getTableHeader().setReorderingAllowed(false);
+        moviesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moviesTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(moviesTable);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -1233,6 +1241,45 @@ public class NewJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_removeGenreButtonActionPerformed
+
+    private void moviesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviesTableMouseClicked
+      if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+     evt.consume();
+     Film film = new Film();
+     Rezyser rezyser = new Rezyser();
+     List gatunki=null;
+     
+          int id = Integer.parseInt(moviesTable.getModel().getValueAt(moviesTable.getSelectedRow(), 0).toString());
+          try {
+              session = NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery("from Film where idFilmu IS " + id);
+            film= (Film) q.list().get(0);
+            q = session.createQuery("from Rezyser where idRezysera IS " + film.getIdRezysera());
+            rezyser = (Rezyser) q.list().get(0);
+            q = session.createQuery("from Gatunek a where a.idGatunku IN (select idGatunku from GatunekFilmId where idFilmu is " +film.getIdFilmu()+")");
+            gatunki = q.list();
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        } finally {
+            session.close();
+        }
+          
+          
+  Informacje info = new Informacje();
+  for (Object o : gatunki)
+  {
+   Gatunek gatunek = (Gatunek) o;
+   info.gatunek.setText(info.gatunek.getText() + gatunek.getNazwa());
+  }
+info.jLabel3.setText(film.getTytul());
+info.rezyser.setText(rezyser.getNazwisko()+ " " + rezyser.getImie());
+info.rok.setText(film.getRokProdukcji().toString());
+
+info.setVisible(true);
+}
+    }//GEN-LAST:event_moviesTableMouseClicked
 
     private void showMovies() {
 
