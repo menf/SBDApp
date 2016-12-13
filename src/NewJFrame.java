@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -51,8 +52,6 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         loginPanel = new javax.swing.JPanel();
         passField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
@@ -98,17 +97,22 @@ public class NewJFrame extends javax.swing.JFrame {
         newGenreNotify = new javax.swing.JLabel();
         addGenreButton = new javax.swing.JButton();
         removeGenrePanel = new javax.swing.JPanel();
+        removeGenreButton = new javax.swing.JButton();
+        removeGenreNotify = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        removeGenreTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         transakcjeMenu = new javax.swing.JMenu();
         adminMenu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        addGatunekMenuItem = new javax.swing.JMenuItem();
+        removeGatunekMenuItem = new javax.swing.JMenuItem();
         moviesMenu = new javax.swing.JMenu();
         menuLogOut = new javax.swing.JMenu();
-
-        jMenuItem5.setText("jMenuItem5");
-
-        jMenuItem6.setText("jMenuItem6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -461,7 +465,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Nazwa");
 
-        addGenreButton.setText("jButton1");
+        addGenreButton.setText("Dodaj");
         addGenreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addGenreButtonActionPerformed(evt);
@@ -483,7 +487,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newGenreName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addGenrePanelLayout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(144, 144, 144)
                         .addComponent(addGenreButton)))
                 .addContainerGap(130, Short.MAX_VALUE))
         );
@@ -501,15 +505,66 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
+        removeGenreButton.setText("Usuń");
+        removeGenreButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeGenreButtonActionPerformed(evt);
+            }
+        });
+
+        removeGenreNotify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        removeGenreTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(removeGenreTable);
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Gatunki");
+
         javax.swing.GroupLayout removeGenrePanelLayout = new javax.swing.GroupLayout(removeGenrePanel);
         removeGenrePanel.setLayout(removeGenrePanelLayout);
         removeGenrePanelLayout.setHorizontalGroup(
             removeGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGroup(removeGenrePanelLayout.createSequentialGroup()
+                .addGroup(removeGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(removeGenrePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(removeGenreNotify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(removeGenrePanelLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(removeGenreButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(removeGenrePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(removeGenrePanelLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         removeGenrePanelLayout.setVerticalGroup(
             removeGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeGenrePanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeGenreButton)
+                .addGap(18, 18, 18)
+                .addComponent(removeGenreNotify)
+                .addGap(64, 64, 64))
         );
 
         transakcjeMenu.setText("Transakcje");
@@ -522,25 +577,49 @@ public class NewJFrame extends javax.swing.JFrame {
 
         adminMenu.setText("Administracja");
 
+        jMenu1.setText("Film");
+
         jMenuItem7.setText("Dodaj Film");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        adminMenu.add(jMenuItem7);
+        jMenu1.add(jMenuItem7);
 
-        jMenuItem1.setText("Usun Film");
+        jMenuItem1.setText("Usuń Film");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        adminMenu.add(jMenuItem1);
+        jMenu1.add(jMenuItem1);
+
+        adminMenu.add(jMenu1);
+
+        jMenu2.setText("Gatunek");
+
+        addGatunekMenuItem.setText("Dodaj Gatunek");
+        addGatunekMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGatunekMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(addGatunekMenuItem);
+
+        removeGatunekMenuItem.setText("Usuń Gatunek");
+        removeGatunekMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeGatunekMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(removeGatunekMenuItem);
+
+        adminMenu.add(jMenu2);
 
         jMenuBar1.add(adminMenu);
 
-        moviesMenu.setText("Baza FIlmów");
+        moviesMenu.setText("Baza Filmów");
         moviesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 moviesMenuMouseClicked(evt);
@@ -648,8 +727,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        
-        
+
         String pass = new String(passField.getPassword());
         if (!logField.getText().trim().equals("") && pass.length() > 0) {
             loginError.setVisible(false);
@@ -667,9 +745,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     loginPanel.setVisible(false);
                     showMovies();
                     moviesPanel.setVisible(true);
-                         
 
-            }else {
+                } else {
                     session = NewHibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
                     query = session.createQuery("from Pracownik  where login is '" + logField.getText() + "' and haslo is '" + pass + "'");
@@ -684,12 +761,11 @@ public class NewJFrame extends javax.swing.JFrame {
                             ROLE = 2;
                             setVisibilities();
                             showTransactions();
-                          transactionPanel.setVisible(true);
+                            transactionPanel.setVisible(true);
                         }
                         loggedId = ((Pracownik) uzytkownicy.get(0)).getIdPracownika();
                         loginPanel.setVisible(false);
-                        
-                        
+
                     }
                     loginError.setVisible(true);
                 }
@@ -698,15 +774,15 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         }
         setVisibilities();
-        
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void moviesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviesMenuMouseClicked
         // TODO add your handling code here:
-        if(!moviesPanel.isVisible()){
-        hideAll();
-        moviesPanel.setVisible(true);
-        showMovies();
+        if (!moviesPanel.isVisible()) {
+            hideAll();
+            moviesPanel.setVisible(true);
+            showMovies();
         }
     }//GEN-LAST:event_moviesMenuMouseClicked
 
@@ -721,113 +797,104 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        if(!addMoviePanel.isVisible()){
-        List carriers = null, directors = null;
-        hideAll();
-        addMoviePanel.setVisible(true);
-        
-        
-        
-        newMovieCarrier.removeAllItems();
-        session = NewHibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("from Nosnik order by idNosnika");
-        carriers = q.list();
-        session.getTransaction().commit();
-        
-        for(Object nosnik : carriers){
-            
-            newMovieCarrier.addItem(((Nosnik)nosnik).getTyp());
+        if (!addMoviePanel.isVisible()) {
+            hideAll();
+            addMoviePanel.setVisible(true);
+
+            List carriers = null, directors = null;
+            newMovieCarrier.removeAllItems();
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery("from Nosnik order by idNosnika");
+            carriers = q.list();
+            session.getTransaction().commit();
+
+            for (Object nosnik : carriers) {
+
+                newMovieCarrier.addItem(((Nosnik) nosnik).getTyp());
+            }
+
+            newMovieDirector.removeAllItems();
+            session.beginTransaction();
+            q = session.createQuery("from Rezyser order by idRezysera");
+            directors = q.list();
+            session.getTransaction().commit();
+
+            for (Object rezyser : directors) {
+                newMovieDirector.addItem(((Rezyser) rezyser).getImie() + " " + ((Rezyser) rezyser).getNazwisko());
+            }
+
+            session.close();
         }
-        
-        newMovieDirector.removeAllItems();
-        session.beginTransaction();
-        q = session.createQuery("from Rezyser order by idRezysera");
-        directors = q.list();
-        session.getTransaction().commit();
-        
-        for(Object rezyser : directors){
-            newMovieDirector.addItem(((Rezyser)rezyser).getImie()+" "+((Rezyser)rezyser).getNazwisko());
-        }
-        
-        session.close();}
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void addMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMovieButtonActionPerformed
         session = NewHibernateUtil.getSessionFactory().openSession();
         newMovieError.setVisible(false);
         addMovieSuccess.setVisible(false);
-        if(newMovieTitle.getText().trim().equals("") || 
-           Integer.parseInt(newMovieYear.getText())<1895 || 
-           Integer.parseInt(newMovieQuant.getText()) < 0 || 
-           newMovieCarrier.getSelectedIndex() < 0 ||
-           newMovieDirector.getSelectedIndex()< 0
-                ){
+        if (newMovieTitle.getText().trim().equals("")
+                || Integer.parseInt(newMovieYear.getText()) < 1895
+                || Integer.parseInt(newMovieQuant.getText()) < 0
+                || newMovieCarrier.getSelectedIndex() < 0
+                || newMovieDirector.getSelectedIndex() < 0) {
             newMovieError.setVisible(true);
-        }else{
-            
+        } else {
+
             Film newFilm = new Film();
-            
+
             newFilm.setTytul(newMovieTitle.getText());
             newFilm.setRokProdukcji(Short.parseShort(newMovieYear.getText()));
             newFilm.setIlosc(Long.parseLong(newMovieQuant.getText()));
-            newFilm.setIdRezysera(newMovieDirector.getSelectedIndex()+1);
-            newFilm.setIdNosnika(newMovieCarrier.getSelectedIndex()+1);
-            try{
-            session.beginTransaction();
-            
-            session.save(newFilm);
-            addMovieSuccess.setVisible(true);
-            }catch(HibernateException he){
+            newFilm.setIdRezysera(newMovieDirector.getSelectedIndex() + 1);
+            newFilm.setIdNosnika(newMovieCarrier.getSelectedIndex() + 1);
+            try {
+                session.beginTransaction();
+
+                session.save(newFilm);
+                addMovieSuccess.setVisible(true);
+            } catch (HibernateException he) {
                 he.printStackTrace();
-            }
-            finally{
+            } finally {
                 session.getTransaction().commit();
                 newFilm = null;
                 session.close();
             }
-            
-           
-            
+
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_addMovieButtonActionPerformed
 
     private void removeMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMovieButtonActionPerformed
         // TODO add your handling code here:
-        
+
         int id = Integer.parseInt(removeMovieTable.getModel().getValueAt(removeMovieTable.getSelectedRow(), 0).toString());
-        try{
+        try {
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query query = session.createQuery("delete Film where idFilmu =:id");
             query.setParameter("id", id);
             int result = query.executeUpdate();
- 
+
             if (result > 0) {
                 removeMovieSuccess.setVisible(true);
-                
             }
-            
-        }catch(HibernateException he){
+
+        } catch (HibernateException he) {
             he.printStackTrace();
             removeMovieError.setVisible(true);
-        }
-        finally{
+        } finally {
             session.getTransaction().commit();
             session.close();
             reloadRemoveMoviesTable();
-           
+
         }
-        
-        
+
+
     }//GEN-LAST:event_removeMovieButtonActionPerformed
 
-    
-    private void reloadRemoveMoviesTable(){
-        
+    private void reloadRemoveMoviesTable() {
+
         removeMoviePanel.setVisible(true);
         session = NewHibernateUtil.getSessionFactory().openSession();
         List moviesList = null, directorList = null;
@@ -839,8 +906,7 @@ public class NewJFrame extends javax.swing.JFrame {
             session.getTransaction().commit();
         } catch (HibernateException he) {
             he.printStackTrace();
-        }
-        finally{
+        } finally {
             session.close();
         }
         Vector<String> tableHeaders = new Vector<>();
@@ -881,155 +947,147 @@ public class NewJFrame extends javax.swing.JFrame {
                     return false;
                 }
             });
-             removeMovieTable.removeColumn(moviesTable.getColumnModel().getColumn(0));
-             session.close();
+            removeMovieTable.removeColumn(removeMovieTable.getColumnModel().getColumn(0));
+            session.close();
         }
     }
-    
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(!removeMoviePanel.isVisible()){
-        hideAll();
-        reloadRemoveMoviesTable();
+        if (!removeMoviePanel.isVisible()) {
+            hideAll();
+            reloadRemoveMoviesTable();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
-        if (moviesTable.getSelectedRow()!=-1)
-{
-  if(moviesTable.getValueAt(moviesTable.getSelectedRow(),4).toString().equalsIgnoreCase("Dostępny"))
-  {
-      session = NewHibernateUtil.getSessionFactory().openSession();
-        try {
+        if (moviesTable.getSelectedRow() != -1) {
+            if (moviesTable.getValueAt(moviesTable.getSelectedRow(), 4).toString().equalsIgnoreCase("Dostępny")) {
+                session = NewHibernateUtil.getSessionFactory().openSession();
+                try {
 
-        Transakcja t;
-      t = new Transakcja();
-      t.setIdKlienta(loggedId);
-      t.setIdFilmu(Integer.parseInt(moviesTable.getModel().getValueAt(moviesTable.getSelectedRow(), 0).toString()));
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-Date date = new Date();
-      t.setDataTransakcji(date);
-      t.setTyp("WYP");
-      session.beginTransaction();
-      session.save(t);
-       session.getTransaction().commit();
-        session.beginTransaction();
-     Query query = session.createQuery("update Film set ilosc =ilosc - 1 where idFilmu =:id");
-            query.setParameter("id", Integer.parseInt(moviesTable.getModel().getValueAt(moviesTable.getSelectedRow(), 0).toString()));
-            query.executeUpdate();
-       session.getTransaction().commit();
-       session.flush();
-       moviesPanel.setVisible(false);
-       showMovies();
-       moviesPanel.setVisible(true);
+                    Transakcja t;
+                    t = new Transakcja();
+                    t.setIdKlienta(loggedId);
+                    t.setIdFilmu(Integer.parseInt(moviesTable.getModel().getValueAt(moviesTable.getSelectedRow(), 0).toString()));
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    Date date = new Date();
+                    t.setDataTransakcji(date);
+                    t.setTyp("WYP");
+                    session.beginTransaction();
+                    session.save(t);
+                    session.getTransaction().commit();
+                    session.beginTransaction();
+                    Query query = session.createQuery("update Film set ilosc =ilosc - 1 where idFilmu =:id");
+                    query.setParameter("id", Integer.parseInt(moviesTable.getModel().getValueAt(moviesTable.getSelectedRow(), 0).toString()));
+                    query.executeUpdate();
+                    session.getTransaction().commit();
+                    session.flush();
+                    moviesPanel.setVisible(false);
+                    showMovies();
+                    moviesPanel.setVisible(true);
 
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        }session.close();
-  }
-}
+                } catch (HibernateException he) {
+                    he.printStackTrace();
+                }
+                session.close();
+            }
+        }
     }//GEN-LAST:event_orderButtonActionPerformed
 
     private void acceptTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptTransactionButtonActionPerformed
-       if (transactionTable.getSelectedRow()!=-1)
-{
-  if(transactionTable.getValueAt(transactionTable.getSelectedRow(),3).toString().equalsIgnoreCase("Wypożyczenie"))
-  {
-       session = NewHibernateUtil.getSessionFactory().openSession();
-        try {
-       
-        session.beginTransaction();
-     Query query = session.createQuery("update Transakcja set idPracownika =:id where idTransakcji =:idT");
-     query.setParameter("id",loggedId);
-     query.setParameter("idT", Integer.parseInt(transactionTable.getModel().getValueAt(transactionTable.getSelectedRow(), 0).toString()));
-     query.executeUpdate();
-       session.getTransaction().commit();
+        if (transactionTable.getSelectedRow() != -1) {
+            if (transactionTable.getValueAt(transactionTable.getSelectedRow(), 3).toString().equalsIgnoreCase("Wypożyczenie")) {
+                session = NewHibernateUtil.getSessionFactory().openSession();
+                try {
 
-       transactionPanel.setVisible(false);
-  
-       showTransactions();
-       transactionPanel.setVisible(true);
+                    session.beginTransaction();
+                    Query query = session.createQuery("update Transakcja set idPracownika =:id where idTransakcji =:idT");
+                    query.setParameter("id", loggedId);
+                    query.setParameter("idT", Integer.parseInt(transactionTable.getModel().getValueAt(transactionTable.getSelectedRow(), 0).toString()));
+                    query.executeUpdate();
+                    session.getTransaction().commit();
 
-        } catch (HibernateException he) {
-            he.printStackTrace();
+                    transactionPanel.setVisible(false);
 
+                    showTransactions();
+                    transactionPanel.setVisible(true);
+
+                } catch (HibernateException he) {
+                    he.printStackTrace();
+
+                }
+            }
         }
-  }
-}
-        
-        
+
+
     }//GEN-LAST:event_acceptTransactionButtonActionPerformed
 
     private void declineTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineTransactionButtonActionPerformed
-        if (transactionTable.getSelectedRow()!=-1)
-{
-  if(transactionTable.getValueAt(transactionTable.getSelectedRow(),3).toString().equalsIgnoreCase("Wypożyczenie"))
-  {
-       session = NewHibernateUtil.getSessionFactory().openSession();
-        try {
-       
-        session.beginTransaction();
-     Query query = session.createQuery("delete Transakcja where idTransakcji =:idT");
-     query.setParameter("idT", Integer.parseInt(transactionTable.getModel().getValueAt(transactionTable.getSelectedRow(), 0).toString()));
-     query.executeUpdate();
-       session.getTransaction().commit();
+        if (transactionTable.getSelectedRow() != -1) {
+            if (transactionTable.getValueAt(transactionTable.getSelectedRow(), 3).toString().equalsIgnoreCase("Wypożyczenie")) {
+                session = NewHibernateUtil.getSessionFactory().openSession();
+                try {
 
-       transactionPanel.setVisible(false);
-  
-       showTransactions();
-       transactionPanel.setVisible(true);
+                    session.beginTransaction();
+                    Query query = session.createQuery("delete Transakcja where idTransakcji =:idT");
+                    query.setParameter("idT", Integer.parseInt(transactionTable.getModel().getValueAt(transactionTable.getSelectedRow(), 0).toString()));
+                    query.executeUpdate();
+                    session.getTransaction().commit();
 
-        } catch (HibernateException he) {
-            he.printStackTrace();
+                    transactionPanel.setVisible(false);
 
+                    showTransactions();
+                    transactionPanel.setVisible(true);
+
+                } catch (HibernateException he) {
+                    he.printStackTrace();
+
+                }
+            }
         }
-  }
-}
     }//GEN-LAST:event_declineTransactionButtonActionPerformed
 
-    
-    private void showTransactions(){
+    private void showTransactions() {
         List transactionList = null, filmList = null;
         session = NewHibernateUtil.getSessionFactory().openSession();
         try {
-            
+
             session.beginTransaction();
             Query q = session.createQuery("from Transakcja where idPracownika is  NULL");
-      
+
             transactionList = q.list();
             session.getTransaction().commit();
-        
-        
-        Vector<String> tableHeaders = new Vector<>();
-        Vector tableData = new Vector();
-        tableHeaders.add("Id");
-        tableHeaders.add("Id Klienta");
-        tableHeaders.add("Tytuł Filmu");
-        tableHeaders.add("Data Transakcji");
-        tableHeaders.add("Typ");
-        if (!transactionList.isEmpty()) {
-            session = NewHibernateUtil.getSessionFactory().openSession();
-            Transakcja transakcja;
-            session.beginTransaction();
 
-            for (Object o : transactionList) {
-                transakcja = (Transakcja) o;
-                Vector<Object> oneRow = new Vector<>();
-                q = session.createQuery("from Film a where a.idFilmu IS " + transakcja.getIdFilmu().toString());
-                filmList = q.list();
+            Vector<String> tableHeaders = new Vector<>();
+            Vector tableData = new Vector();
+            tableHeaders.add("Id");
+            tableHeaders.add("Id Klienta");
+            tableHeaders.add("Tytuł Filmu");
+            tableHeaders.add("Data Transakcji");
+            tableHeaders.add("Typ");
+            if (!transactionList.isEmpty()) {
+                session = NewHibernateUtil.getSessionFactory().openSession();
+                Transakcja transakcja;
+                session.beginTransaction();
 
-                oneRow.add(transakcja.getIdTransakcji());
-                oneRow.add(transakcja.getIdKlienta());
-                oneRow.add(((Film)filmList.get(0)).getTytul());
-                oneRow.add(transakcja.getDataTransakcji());
-                if(transakcja.getTyp().equals("WYP")){
-                    oneRow.add("Wypożyczenie");
+                for (Object o : transactionList) {
+                    transakcja = (Transakcja) o;
+                    Vector<Object> oneRow = new Vector<>();
+                    q = session.createQuery("from Film a where a.idFilmu IS " + transakcja.getIdFilmu().toString());
+                    filmList = q.list();
+
+                    oneRow.add(transakcja.getIdTransakcji());
+                    oneRow.add(transakcja.getIdKlienta());
+                    oneRow.add(((Film) filmList.get(0)).getTytul());
+                    oneRow.add(transakcja.getDataTransakcji());
+                    if (transakcja.getTyp().equals("WYP")) {
+                        oneRow.add("Wypożyczenie");
+                    } else {
+                        oneRow.add("Zwrot");
+                    }
+                    tableData.add(oneRow);
                 }
-                else{
-                    oneRow.add("Zwrot");
-                }
-                tableData.add(oneRow);
             }
-           }
             transactionTable.setModel(new DefaultTableModel(tableData, tableHeaders) {
                 public boolean isCellEditable(int rowIndex, int mColIndex) {
                     return false;
@@ -1038,17 +1096,15 @@ Date date = new Date();
 
             transactionTable.removeColumn(transactionTable.getColumnModel().getColumn(0));
             session.close();
-        }catch (HibernateException he) {
+        } catch (HibernateException he) {
             he.printStackTrace();
         }
-        
-        
-        
+
     }
-    
+
     private void transakcjeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transakcjeMenuMouseClicked
-        
-        if(!transactionPanel.isVisible()){
+
+        if (!transactionPanel.isVisible()) {
             hideAll();
             transactionPanel.setVisible(true);
 
@@ -1061,53 +1117,131 @@ Date date = new Date();
         session = NewHibernateUtil.getSessionFactory().openSession();
         newGenreNotify.setVisible(false);
 
-        if(newGenreName.getText().trim().equals("")){
+        if (newGenreName.getText().trim().equals("")) {
             newGenreNotify.setText("Wprowadź poprawne dane!");
             newGenreNotify.setForeground(Color.red);
             newGenreNotify.setVisible(true);
-        }else{
-            
+        } else {
+
             Gatunek newGatunek = new Gatunek();
-            
+
             newGatunek.setNazwa(newGenreName.getText());
-            try{
-            session.beginTransaction();
-            
-            session.save(newGatunek);
-            addMovieSuccess.setVisible(true);
-            }catch(HibernateException he){
+            try {
+                session.beginTransaction();
+
+                session.save(newGatunek);
+                addMovieSuccess.setVisible(true);
+                newGenreNotify.setText("Dodano gatunek!");
+                newGenreNotify.setForeground(Color.green);
+                newGenreNotify.setVisible(true);
+            } catch (HibernateException he) {
                 he.printStackTrace();
                 newGenreNotify.setText("Coś poszło nie tak!");
                 newGenreNotify.setForeground(Color.red);
                 newGenreNotify.setVisible(true);
-            }
-            finally{
-                newGenreNotify.setText("Dodano gatunek!");
-                newGenreNotify.setForeground(Color.green);
-                newGenreNotify.setVisible(true);
+            } finally {
                 session.getTransaction().commit();
                 newGatunek = null;
                 session.close();
             }
+
+        }
+
+
+    }//GEN-LAST:event_addGenreButtonActionPerformed
+
+    private void addGatunekMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGatunekMenuItemActionPerformed
+        if (!addGenrePanel.isVisible()) {
+            hideAll();
+            addGenrePanel.setVisible(true);
+        }
+    }//GEN-LAST:event_addGatunekMenuItemActionPerformed
+
+    private void removeGatunekMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeGatunekMenuItemActionPerformed
+        if (!removeGenrePanel.isVisible()) {
+            hideAll();
+            removeGenrePanel.setVisible(true);
+            reloadRemoveGenresTable();
+        }
+        
+    }//GEN-LAST:event_removeGatunekMenuItemActionPerformed
+
+    private void reloadRemoveGenresTable(){
+        
+        removeGenrePanel.setVisible(true);
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        List genres = null;
+        removeGenreTable.removeAll();
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("from Gatunek");
+            genres = q.list();
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
             
-           
-            
+        } finally {
+            session.close();
+        }
+        Vector<String> tableHeaders = new Vector<>();
+        Vector tableData = new Vector();
+        tableHeaders.add("Id");
+        tableHeaders.add("Gatunek");
+        if (!genres.isEmpty()) {
+            Gatunek gatunek;
+            for (Object o : genres) {
+                gatunek = (Gatunek) o;
+                Vector<Object> oneRow = new Vector<>();
+                oneRow.add(gatunek.getIdGatunku());
+                oneRow.add(gatunek.getNazwa());
+                tableData.add(oneRow);
+            }
+            removeGenreTable.setModel(new DefaultTableModel(tableData, tableHeaders) {
+                public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    return false;
+                }
+            });
+        } 
+    }
+    
+    
+    private void removeGenreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeGenreButtonActionPerformed
+        
+        int id = Integer.parseInt(removeGenreTable.getModel().getValueAt(removeGenreTable.getSelectedRow(), 0).toString());
+        try {
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("delete Gatunek where idGatunku =:id");
+            query.setParameter("id", id);
+            int result = query.executeUpdate();
+
+            if (result > 0) {
+                removeGenreNotify.setText("Usunięto gatunek!");
+                removeGenreNotify.setForeground(Color.green);
+                removeGenreNotify.setVisible(true);
+            }
+
+        } catch (HibernateException he) {
+            removeGenreNotify.setText("Nie można usunąć gatunku!");
+            removeGenreNotify.setForeground(Color.red);
+            removeGenreNotify.setVisible(true);
+        } finally {
+            session.getTransaction().commit();
+            session.close();
+            reloadRemoveGenresTable();
+
         }
         
         
-    }//GEN-LAST:event_addGenreButtonActionPerformed
- 
+    }//GEN-LAST:event_removeGenreButtonActionPerformed
 
     private void showMovies() {
-        
-        if(ROLE != 0){
+
+        if (ROLE != 0) {
             orderButton.setVisible(false);
-        }
-        else{
+        } else {
             orderButton.setVisible(true);
         }
-        
-        
+
         moviesTable.removeAll();
         List moviesList = null, directorList = null;
         try {
@@ -1163,8 +1297,7 @@ Date date = new Date();
 
     }
 
-    
-    private void hideAll(){
+    private void hideAll() {
         loginPanel.setVisible(false);
         moviesPanel.setVisible(false);
         addMoviePanel.setVisible(false);
@@ -1174,18 +1307,17 @@ Date date = new Date();
         removeMoviePanel.setVisible(false);
         hideErrors();
     }
-    
-    private void hideErrors(){
+
+    private void hideErrors() {
         loginError.setVisible(false);
         removeMovieSuccess.setVisible(false);
         removeMovieError.setVisible(false);
         addMovieSuccess.setVisible(false);
         newMovieError.setVisible(false);
         newGenreNotify.setVisible(false);
-        
+
     }
-    
-    
+
     private void setVisibilities() {
 
         transakcjeMenu.setVisible(false);
@@ -1193,7 +1325,7 @@ Date date = new Date();
         menuLogOut.setVisible(false);
         moviesMenu.setVisible(false);
         loginError.setVisible(false);
-        
+
         switch (ROLE) {
             case 0:  //uzytkownik
                 menuLogOut.setVisible(true);
@@ -1213,8 +1345,6 @@ Date date = new Date();
 
         }
     }
-
-   
 
     /**
      * @param args the command line arguments
@@ -1249,16 +1379,16 @@ Date date = new Date();
                 NewJFrame frame = new NewJFrame();
                 frame.setVisibilities();
                 frame.hideAll();
-                frame.loginPanel.setVisible(true); 
+                frame.loginPanel.setVisible(true);
                 frame.setVisible(true);
-                
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptTransactionButton;
+    private javax.swing.JMenuItem addGatunekMenuItem;
     private javax.swing.JButton addGenreButton;
     private javax.swing.JPanel addGenrePanel;
     private javax.swing.JButton addMovieButton;
@@ -1268,17 +1398,19 @@ Date date = new Date();
     private javax.swing.JButton declineTransactionButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1303,7 +1435,11 @@ Date date = new Date();
     private javax.swing.JTextField newMovieYear;
     private javax.swing.JButton orderButton;
     private javax.swing.JPasswordField passField;
+    private javax.swing.JMenuItem removeGatunekMenuItem;
+    private javax.swing.JButton removeGenreButton;
+    private javax.swing.JLabel removeGenreNotify;
     private javax.swing.JPanel removeGenrePanel;
+    private javax.swing.JTable removeGenreTable;
     private javax.swing.JButton removeMovieButton;
     private javax.swing.JLabel removeMovieError;
     private javax.swing.JPanel removeMoviePanel;
