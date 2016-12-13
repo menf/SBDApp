@@ -1317,7 +1317,7 @@ public class NewJFrame extends javax.swing.JFrame {
             film= (Film) q.list().get(0);
             q = session.createQuery("from Rezyser where idRezysera IS " + film.getIdRezysera());
             rezyser = (Rezyser) q.list().get(0);
-            q = session.createQuery("from Gatunek a where a.idGatunku IN (select idGatunku from GatunekFilmId where idFilmu is " +film.getIdFilmu()+")");
+            q = session.createQuery("from Gatunek a where a.idGatunku IN (select id.idGatunku from GatunekFilm where id.idFilmu is " +film.getIdFilmu()+")");
             gatunki = q.list();
             session.getTransaction().commit();
         } catch (HibernateException he) {
@@ -1328,11 +1328,12 @@ public class NewJFrame extends javax.swing.JFrame {
           
           
   Informacje info = new Informacje();
-  for (Object o : gatunki)
+  for(Object o : gatunki)
   {
    Gatunek gatunek = (Gatunek) o;
-   info.gatunek.setText(info.gatunek.getText() + gatunek.getNazwa());
+   info.gatunek.setText(info.gatunek.getText() + " | " + gatunek.getNazwa());
   }
+  info.gatunek.setText(info.gatunek.getText() + " |");
 info.jLabel3.setText(film.getTytul());
 info.rezyser.setText(rezyser.getNazwisko()+ " " + rezyser.getImie());
 info.rok.setText(film.getRokProdukcji().toString());
