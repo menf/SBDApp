@@ -1,10 +1,12 @@
 
 import POJO.Film;
+import POJO.Gatunek;
 import POJO.Klient;
 import POJO.Nosnik;
 import POJO.Pracownik;
 import POJO.Rezyser;
 import POJO.Transakcja;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -90,6 +92,12 @@ public class NewJFrame extends javax.swing.JFrame {
         transactionTable = new javax.swing.JTable();
         acceptTransactionButton = new javax.swing.JButton();
         declineTransactionButton = new javax.swing.JButton();
+        addGenrePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        newGenreName = new javax.swing.JTextField();
+        newGenreNotify = new javax.swing.JLabel();
+        addGenreButton = new javax.swing.JButton();
+        removeGenrePanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         transakcjeMenu = new javax.swing.JMenu();
         adminMenu = new javax.swing.JMenu();
@@ -451,6 +459,59 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
+        jLabel10.setText("Nazwa");
+
+        addGenreButton.setText("jButton1");
+        addGenreButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGenreButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addGenrePanelLayout = new javax.swing.GroupLayout(addGenrePanel);
+        addGenrePanel.setLayout(addGenrePanelLayout);
+        addGenrePanelLayout.setHorizontalGroup(
+            addGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addGenrePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newGenreNotify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(addGenrePanelLayout.createSequentialGroup()
+                .addGroup(addGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addGenrePanelLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newGenreName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addGenrePanelLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(addGenreButton)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        addGenrePanelLayout.setVerticalGroup(
+            addGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addGenrePanelLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(addGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newGenreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(addGenreButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(newGenreNotify, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+        );
+
+        javax.swing.GroupLayout removeGenrePanelLayout = new javax.swing.GroupLayout(removeGenrePanel);
+        removeGenrePanel.setLayout(removeGenrePanelLayout);
+        removeGenrePanelLayout.setHorizontalGroup(
+            removeGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 393, Short.MAX_VALUE)
+        );
+        removeGenrePanelLayout.setVerticalGroup(
+            removeGenrePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+        );
+
         transakcjeMenu.setText("Transakcje");
         transakcjeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -529,6 +590,16 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(transactionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(addGenrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(removeGenrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -557,6 +628,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(transactionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(addGenrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(removeGenrePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -623,10 +704,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private void moviesMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moviesMenuMouseClicked
         // TODO add your handling code here:
         if(!moviesPanel.isVisible()){
-        loginPanel.setVisible(false);
+        hideAll();
         moviesPanel.setVisible(true);
-        addMoviePanel.setVisible(false);
-        transactionPanel.setVisible(false);
         showMovies();
         }
     }//GEN-LAST:event_moviesMenuMouseClicked
@@ -635,11 +714,8 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         ROLE = -1;
         loggedId = -1;
-        moviesPanel.setVisible(false);
+        hideAll();
         loginPanel.setVisible(true);
-        addMoviePanel.setVisible(false);
-        removeMoviePanel.setVisible(false);
-        transactionPanel.setVisible(false);
         setVisibilities();
     }//GEN-LAST:event_menuLogOutMouseClicked
 
@@ -647,13 +723,10 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!addMoviePanel.isVisible()){
         List carriers = null, directors = null;
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);  
+        hideAll();
         addMoviePanel.setVisible(true);
-        transactionPanel.setVisible(false);
-        removeMoviePanel.setVisible(false);
-        newMovieError.setVisible(false);
-        addMovieSuccess.setVisible(false);
+        
+        
         
         newMovieCarrier.removeAllItems();
         session = NewHibernateUtil.getSessionFactory().openSession();
@@ -681,7 +754,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void addMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMovieButtonActionPerformed
-session = NewHibernateUtil.getSessionFactory().openSession();
+        session = NewHibernateUtil.getSessionFactory().openSession();
         newMovieError.setVisible(false);
         addMovieSuccess.setVisible(false);
         if(newMovieTitle.getText().trim().equals("") || 
@@ -744,8 +817,9 @@ session = NewHibernateUtil.getSessionFactory().openSession();
         }
         finally{
             session.getTransaction().commit();
-            reloadRemoveMoviesTable();
             session.close();
+            reloadRemoveMoviesTable();
+           
         }
         
         
@@ -766,6 +840,9 @@ session = NewHibernateUtil.getSessionFactory().openSession();
         } catch (HibernateException he) {
             he.printStackTrace();
         }
+        finally{
+            session.close();
+        }
         Vector<String> tableHeaders = new Vector<>();
         Vector tableData = new Vector();
         tableHeaders.add("Id");
@@ -775,6 +852,7 @@ session = NewHibernateUtil.getSessionFactory().openSession();
         tableHeaders.add("Nośnik");
         tableHeaders.add("Dostępność");
         if (!moviesList.isEmpty()) {
+            session = NewHibernateUtil.getSessionFactory().openSession();
             Film film;
             session.beginTransaction();
             Query q;
@@ -810,13 +888,7 @@ session = NewHibernateUtil.getSessionFactory().openSession();
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if(!removeMoviePanel.isVisible()){
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);  
-        addMoviePanel.setVisible(false);
-        removeMoviePanel.setVisible(true);
-        removeMovieError.setVisible(false);
-        removeMovieSuccess.setVisible(false);
-        transactionPanel.setVisible(false);
+        hideAll();
         reloadRemoveMoviesTable();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -977,19 +1049,53 @@ Date date = new Date();
     private void transakcjeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transakcjeMenuMouseClicked
         
         if(!transactionPanel.isVisible()){
-        moviesPanel.setVisible(false);
-        loginPanel.setVisible(false);  
-        addMoviePanel.setVisible(false);
-        removeMoviePanel.setVisible(false);
-        removeMovieError.setVisible(false);
-        removeMovieSuccess.setVisible(false);
-        transactionPanel.setVisible(true);
+            hideAll();
+            transactionPanel.setVisible(true);
 
         }
-        
         showTransactions();
-        
     }//GEN-LAST:event_transakcjeMenuMouseClicked
+
+    private void addGenreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGenreButtonActionPerformed
+        // TODO add your handling code here:
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        newGenreNotify.setVisible(false);
+
+        if(newGenreName.getText().trim().equals("")){
+            newGenreNotify.setText("Wprowadź poprawne dane!");
+            newGenreNotify.setForeground(Color.red);
+            newGenreNotify.setVisible(true);
+        }else{
+            
+            Gatunek newGatunek = new Gatunek();
+            
+            newGatunek.setNazwa(newGenreName.getText());
+            try{
+            session.beginTransaction();
+            
+            session.save(newGatunek);
+            addMovieSuccess.setVisible(true);
+            }catch(HibernateException he){
+                he.printStackTrace();
+                newGenreNotify.setText("Coś poszło nie tak!");
+                newGenreNotify.setForeground(Color.red);
+                newGenreNotify.setVisible(true);
+            }
+            finally{
+                newGenreNotify.setText("Dodano gatunek!");
+                newGenreNotify.setForeground(Color.green);
+                newGenreNotify.setVisible(true);
+                session.getTransaction().commit();
+                newGatunek = null;
+                session.close();
+            }
+            
+           
+            
+        }
+        
+        
+    }//GEN-LAST:event_addGenreButtonActionPerformed
  
 
     private void showMovies() {
@@ -1057,6 +1163,29 @@ Date date = new Date();
 
     }
 
+    
+    private void hideAll(){
+        loginPanel.setVisible(false);
+        moviesPanel.setVisible(false);
+        addMoviePanel.setVisible(false);
+        transactionPanel.setVisible(false);
+        addGenrePanel.setVisible(false);
+        removeGenrePanel.setVisible(false);
+        removeMoviePanel.setVisible(false);
+        hideErrors();
+    }
+    
+    private void hideErrors(){
+        loginError.setVisible(false);
+        removeMovieSuccess.setVisible(false);
+        removeMovieError.setVisible(false);
+        addMovieSuccess.setVisible(false);
+        newMovieError.setVisible(false);
+        newGenreNotify.setVisible(false);
+        
+    }
+    
+    
     private void setVisibilities() {
 
         transakcjeMenu.setVisible(false);
@@ -1119,13 +1248,8 @@ Date date = new Date();
             public void run() {
                 NewJFrame frame = new NewJFrame();
                 frame.setVisibilities();
-                frame.moviesPanel.setVisible(false);
-                frame.loginPanel.setVisible(true);
-                frame.loginError.setVisible(false);
-                frame.addMoviePanel.setVisible(false);
-                frame.removeMoviePanel.setVisible(false);
-                frame.transactionPanel.setVisible(false);
-               
+                frame.hideAll();
+                frame.loginPanel.setVisible(true); 
                 frame.setVisible(true);
                 
                 
@@ -1135,11 +1259,14 @@ Date date = new Date();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptTransactionButton;
+    private javax.swing.JButton addGenreButton;
+    private javax.swing.JPanel addGenrePanel;
     private javax.swing.JButton addMovieButton;
     private javax.swing.JPanel addMoviePanel;
     private javax.swing.JLabel addMovieSuccess;
     private javax.swing.JMenu adminMenu;
     private javax.swing.JButton declineTransactionButton;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1166,6 +1293,8 @@ Date date = new Date();
     private javax.swing.JMenu moviesMenu;
     private javax.swing.JPanel moviesPanel;
     private javax.swing.JTable moviesTable;
+    private javax.swing.JTextField newGenreName;
+    private javax.swing.JLabel newGenreNotify;
     private javax.swing.JComboBox<String> newMovieCarrier;
     private javax.swing.JComboBox<String> newMovieDirector;
     private javax.swing.JLabel newMovieError;
@@ -1174,6 +1303,7 @@ Date date = new Date();
     private javax.swing.JTextField newMovieYear;
     private javax.swing.JButton orderButton;
     private javax.swing.JPasswordField passField;
+    private javax.swing.JPanel removeGenrePanel;
     private javax.swing.JButton removeMovieButton;
     private javax.swing.JLabel removeMovieError;
     private javax.swing.JPanel removeMoviePanel;
